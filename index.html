@@ -37,16 +37,15 @@
 
 			/* 2. TEXT BLOCK BACKGROUND TRANSPARENCY & TEXT READABILITY */
 			.box.style2 {
-				background-color: rgba(20, 20, 20, 0.6) !important; /* Slightly more transparent box */
+				background-color: rgba(20, 20, 20, 0.6) !important; 
 			}
 			
-			/* Force all text inside the box to be white with a subtle shadow for readability */
 			.box.style2, .box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 			}
 
-			/* 3. SCROLL ANIMATION */
+			/* 3. SCROLL ANIMATION (MOUSE ICON) */
 			.scroll-wrapper {
 				display: inline-block;
 				margin-top: 30px;
@@ -65,7 +64,7 @@
 				border-radius: 15px;
 				position: relative;
 				margin: 0 auto 10px auto;
-				box-shadow: 0px 0px 5px rgba(0,0,0,0.5); /* Helps it pop against the background */
+				box-shadow: 0px 0px 5px rgba(0,0,0,0.5); 
 			}
 			.wheel {
 				width: 4px;
@@ -89,6 +88,17 @@
 			@keyframes scrollWheel {
 				0% { top: 8px; opacity: 1; }
 				100% { top: 28px; opacity: 0; }
+			}
+
+			/* 4. SCROLL TRANSITIONS FOR SECTIONS */
+			.reveal {
+				opacity: 0;
+				transform: translateY(50px); /* Starts slightly lower */
+				transition: all 0.8s ease-out; /* Smooth transition */
+			}
+			.reveal.active {
+				opacity: 1;
+				transform: translateY(0); /* Glides into place */
 			}
 
 		</style>
@@ -128,7 +138,7 @@
 			</section>
 
 		<section id="current" class="main style2 right dark fullscreen">
-				<div class="content box style2">
+				<div class="content box style2 reveal">
 					<header>
 						<h2>Current and Recent Engagements (2026)</h2>
 					</header>
@@ -139,7 +149,7 @@
 			</section>
 
 		<section id="highlights" class="main style2 left dark fullscreen">
-				<div class="content box style2">
+				<div class="content box style2 reveal">
 					<header>
 						<h2>2024/2025 Season Highlights</h2>
 					</header>
@@ -152,7 +162,7 @@
 			</section>
 
 		<section id="past" class="main style2 right dark fullscreen">
-				<div class="content box style2">
+				<div class="content box style2 reveal">
 					<header>
 						<h2>Past Seasons & Early Highlights</h2>
 					</header>
@@ -163,7 +173,7 @@
 			</section>
 
 		<section id="credentials" class="main style2 left dark fullscreen">
-				<div class="content box style2">
+				<div class="content box style2 reveal">
 					<header>
 						<h2>Awards and Honors</h2>
 					</header>
@@ -193,7 +203,7 @@
 						<p>Recent performances and stage highlights.</p>
 					</header>
 
-					<div class="gallery">
+					<div class="gallery reveal">
 							
 							<article class="from-left">
 								<a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" data-poptrox="youtube,800x400" class="image fit">
@@ -229,7 +239,7 @@
 					<header>
 						<h2>Get in touch</h2>
 					</header>
-					<div class="box">
+					<div class="box reveal">
 						<form method="post" action="#">
 							<div class="fields">
 								<div class="field half"><input type="text" name="firstname" placeholder="First Name" required /></div>
@@ -257,7 +267,7 @@
 
 			</footer>
 
-		<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.poptrox.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -265,6 +275,29 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					const reveals = document.querySelectorAll(".reveal");
+					
+					const revealObserver = new IntersectionObserver((entries, observer) => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("active");
+							} else {
+								// Optional: Remove class when scrolling back up so it animates again
+								entry.target.classList.remove("active");
+							}
+						});
+					}, {
+						threshold: 0.2 // Triggers the animation when 20% of the box is visible
+					});
+
+					reveals.forEach(reveal => {
+						revealObserver.observe(reveal);
+					});
+				});
+			</script>
 
 	</body>
 </html>
