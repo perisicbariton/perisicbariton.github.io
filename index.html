@@ -209,11 +209,15 @@
 			#intro .content {
 				padding-top: 200px !important; 
 			}
-			body, html {
-				background-color: #0d0d0d !important; 
-			}
-			#media, #contact {
-				background-color: #0d0d0d !important; 
+			body, html, #media, #contact, #footer {
+    background-color: #0d0d0d !important; 
+}
+/* This removes any weird green shadow/border the template might have left */
+#footer {
+    box-shadow: none !important;
+    border-top: none !important;
+}
+
 			}
 			#media header h2, #media header p,
 			#contact header h2, #contact header p, #media h3 {
