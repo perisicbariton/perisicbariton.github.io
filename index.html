@@ -33,20 +33,25 @@
 				background-position: center;
 				background-size: cover;
 			}
-			#credentials {
+			#acknowledgements {
 				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/credentials-bg.jpg') !important;
 				background-position: center;
 				background-size: cover;
 			}
 
-			/* 2. TEXT BLOCK "ETHEREAL" FADE & TAPERED EDGES */
+			/* 2. TEXT BLOCK "ETHEREAL" FADE & TAPERED EDGES (NO BLUR) */
 			.box.style2 {
-				background-color: rgba(15, 15, 15, 0.55) !important; 
-				/* This creates the "Tapered/Feathered" edge effect */
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+				background-color: rgba(15, 15, 15, 0) !important; 
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important; 
 				border: none !important;
-				backdrop-filter: blur(4px);
-				-webkit-backdrop-filter: blur(4px);
+				/* No backdrop-filter here to keep image clear */
+				transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+			}
+			
+			/* Background and glow fade in only when section is active */
+			.reveal.active.box.style2 {
+				background-color: rgba(15, 15, 15, 0.55) !important; 
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
 			}
 			
 			.box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
@@ -102,7 +107,6 @@
 			.reveal {
 				opacity: 0 !important;
 				transform: translateY(50px) !important;
-				/* "All" ensures the background and text fade in together */
 				transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
 			}
 			.reveal.active {
@@ -193,7 +197,6 @@
 			}
 
 			/* 9. LAYOUT & DARK MODE FIXES */
-			/* Using padding instead of transform to avoid animation conflicts */
 			#intro .content {
 				padding-top: 120px !important; 
 			}
@@ -319,13 +322,13 @@
 					<p>Perišić’s earlier international career is marked by prestigious debuts. In 2023, he performed multiple roles in Shostakovich's <em>The Nose</em> at Teatro Real in Madrid and appeared as Scarus in the European premiere of John Adams' <em>Antony & Cleopatra</em> at the Gran Teatre del Liceu.</p>
 					<p>In 2022, he sang the title role in <em>Don Giovanni</em> in Spoleto and Perugia, and Alonso in the world premiere of J. Carmena's <em>El Orgullo de Quererte</em> at Teatros del Canal.</p>
 				</div>
-				<a href="#credentials" class="button style2 down anchored">Next</a>
+				<a href="#acknowledgements" class="button style2 down anchored">Next</a>
 			</section>
 
 		<section id="acknowledgements" class="main style2 left dark fullscreen">
 				<div class="content box style2 reveal">
 					<header>
-						<h2>Awards & Honors</h2>
+						<h2>Acknowledgements</h2>
 					</header>
 					<p>Milan Perišić is a distinguished prize-winner in numerous international competitions. Recent accolades include:</p>
 					<ul>
