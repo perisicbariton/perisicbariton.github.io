@@ -39,25 +39,17 @@
 				background-size: cover;
 			}
 
-			/* 2. TEXT BLOCK "ETHERAL" FADE & TAPERED EDGES */
+			/* 2. TEXT BLOCK "ETHEREAL" FADE & TAPERED EDGES */
 			.box.style2 {
-				background-color: rgba(15, 15, 15, 0) !important; /* Start fully transparent */
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important; /* Start with no shadow */
-				border: none !important;
-				transition: background-color 1.5s ease, box-shadow 1.5s ease !important;
-				backdrop-filter: blur(0px);
-				-webkit-backdrop-filter: blur(0px);
-			}
-			
-			/* When the section becomes active, the "glow" and background appear together */
-			.reveal.active .box.style2 {
 				background-color: rgba(15, 15, 15, 0.55) !important; 
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; /* Creates the tapered edge */
+				/* This creates the "Tapered/Feathered" edge effect */
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+				border: none !important;
 				backdrop-filter: blur(4px);
 				-webkit-backdrop-filter: blur(4px);
 			}
 			
-			.box.style2, .box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
+			.box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 			}
@@ -109,8 +101,9 @@
 			/* 4. SILKY SMOOTH SCROLL TRANSITIONS */
 			.reveal {
 				opacity: 0 !important;
-				transform: translateY(50px) !important; /* Reduced distance for smoother feel */
-				transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+				transform: translateY(50px) !important;
+				/* "All" ensures the background and text fade in together */
+				transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
 			}
 			.reveal.active {
 				opacity: 1 !important;
@@ -200,8 +193,9 @@
 			}
 
 			/* 9. LAYOUT & DARK MODE FIXES */
+			/* Using padding instead of transform to avoid animation conflicts */
 			#intro .content {
-				transform: translateY(120px) !important; 
+				padding-top: 120px !important; 
 			}
 			body, html {
 				background-color: #0d0d0d !important; 
@@ -269,7 +263,7 @@
 						<li><a href="#current">2026 Season</a></li>
 						<li><a href="#highlights">24/25 Highlights</a></li>
 						<li><a href="#past">Past Seasons</a></li>
-						<li><a href="#acknowledgements">Acknowledgements</a></li>
+						<li><a href="#credentials">Credentials</a></li>
 						<li><a href="#media">Media</a></li>
 						<li><a href="#contact">Contact</a></li>
 					</ul>
