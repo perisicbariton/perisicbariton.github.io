@@ -35,7 +35,7 @@
 				background-size: cover;
 			}
 
-						/* 2. TEXT BLOCK BACKGROUND TRANSPARENCY & TEXT READABILITY */
+			/* 2. TEXT BLOCK BACKGROUND TRANSPARENCY & TEXT READABILITY */
 			.box.style2 {
 				background-color: rgba(20, 20, 20, 0.6) !important; /* Slightly more transparent box */
 			}
@@ -44,6 +44,51 @@
 			.box.style2, .box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+			}
+
+			/* 3. SCROLL ANIMATION */
+			.scroll-wrapper {
+				display: inline-block;
+				margin-top: 30px;
+				text-decoration: none;
+				border-bottom: none !important;
+				opacity: 0.8;
+				transition: opacity 0.3s ease;
+			}
+			.scroll-wrapper:hover {
+				opacity: 1;
+			}
+			.mouse {
+				width: 30px;
+				height: 50px;
+				border: 2px solid #ffffff;
+				border-radius: 15px;
+				position: relative;
+				margin: 0 auto 10px auto;
+				box-shadow: 0px 0px 5px rgba(0,0,0,0.5); /* Helps it pop against the background */
+			}
+			.wheel {
+				width: 4px;
+				height: 8px;
+				background-color: #ffffff;
+				border-radius: 2px;
+				position: absolute;
+				top: 8px;
+				left: 50%;
+				transform: translateX(-50%);
+				animation: scrollWheel 1.5s infinite;
+			}
+			.scroll-text {
+				color: #ffffff;
+				font-size: 0.85em;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+			}
+			
+			@keyframes scrollWheel {
+				0% { top: 8px; opacity: 1; }
+				100% { top: 28px; opacity: 0; }
 			}
 
 		</style>
@@ -72,7 +117,12 @@
 					</header>
 					<p>Baritone</p>
 					<footer>
-						<a href="#current" class="button style2 down">More</a>
+						<a href="#current" class="scroll-wrapper scrolly">
+							<div class="mouse">
+								<div class="wheel"></div>
+							</div>
+							<div class="scroll-text">Discover</div>
+						</a>
 					</footer>
 				</div>
 			</section>
