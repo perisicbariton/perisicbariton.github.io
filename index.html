@@ -12,14 +12,14 @@
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
 		<style>
-			/* 1. THE "NO-HEADER" PROTOCOL */
+			/* 1. THE "NO-HEADER" PROTOCOL - Kills the rectangle and ghost bars */
 			#header, #header:before, #header:after, #titleBar {
 				display: none !important;
 				visibility: hidden !important;
 				opacity: 0 !important;
 			}
-			body { padding-top: 0 !important; margin-top: 0 !important; overflow-x: hidden !important; }
-			html { background-color: #0d0d0d !important; }
+			body { padding-top: 0 !important; margin-top: 0 !important; overflow-x: hidden !important; background-color: #0d0d0d !important; }
+			html { scroll-behavior: smooth; background-color: #0d0d0d !important; }
 
 			/* 2. BACKGROUNDS */
 			#intro { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/intro-bg.jpg') !important; background-position: center; background-size: cover; }
@@ -28,23 +28,26 @@
 			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
 			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
-			/* 3. THE ETHEREAL BLOOM (Integrated with Template Logic) */
+			/* 3. FLUIDITY & TRANSITIONS (Mobile Optimized) */
 			.main .content {
+				opacity: 1;
+				transform: translateY(0);
 				background-color: rgba(15, 15, 15, 0.55) !important; 
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
 				border: none !important;
-				transition: opacity 1.2s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1), background-color 1.2s ease, box-shadow 1.2s ease !important;
+				/* Smoother, slightly longer timing for a "drifting" feel */
+				transition: opacity 1.2s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1), background-color 1.2s ease, box-shadow 1.2s ease !important;
 			}
 			
-			/* Tapping into the template's native "inactive" state for the glide */
+			/* Uses the template's internal 'inactive' class to create the reveal */
 			.main.inactive .content {
 				opacity: 0 !important;
-				transform: translateY(2.5em) !important;
+				transform: translateY(20px) !important;
 				background-color: rgba(15, 15, 15, 0) !important;
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important;
 			}
 
-			/* 4. TYPOGRAPHY & COLORS */
+			/* 4. TYPOGRAPHY */
 			body, p, a, li, span { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
 			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
 			
@@ -53,7 +56,7 @@
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
-			/* 5. LAYOUT & DESKTOP ALIGNMENT */
+			/* 5. LAYOUT & DESKTOP ALTERNATING SIDES */
 			#intro .content { padding-top: 200px !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
@@ -63,26 +66,61 @@
 				.main.style2 .content { max-width: 45% !important; }
 				.main.style2.right .content { margin-left: auto !important; margin-right: 0 !important; }
 				.main.style2.left .content { margin-right: auto !important; margin-left: 0 !important; }
-				#media .content, #contact .content { padding: 100px 0 !important; }
+				#media .content, #contact .content { padding: 120px 0 !important; }
 			}
 
 			@media screen and (max-width: 980px) {
 				#intro .content { padding-top: 150px !important; }
+				/* Mobile specific shadow to prevent edge-bleeding */
 				.main .content { box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.55) !important; }
 			}
 
-			/* 6. MOUSE ICON */
+			/* 6. THE CONTACT BOX FIX (Solving the white box issue) */
+			#contact .box {
+				background: transparent !important;
+				background-color: transparent !important;
+				box-shadow: none !important;
+				border: none !important;
+				padding: 0 !important;
+			}
+			#contact form input[type="text"], 
+			#contact form input[type="email"], 
+			#contact form textarea {
+				background: transparent !important;
+				border: none !important;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+				border-radius: 0 !important;
+				color: #ffffff !important;
+				padding: 10px 5px !important;
+				margin-bottom: 20px !important;
+				transition: border-color 0.3s ease !important;
+			}
+			#contact form input:focus, #contact form textarea:focus {
+				border-bottom: 1px solid #ffffff !important;
+				outline: none !important;
+			}
+			#contact input[type="submit"] {
+				background-color: transparent !important;
+				border: 1px solid #ffffff !important;
+				color: #ffffff !important;
+				border-radius: 40px !important;
+				padding: 0.75em 2.5em !important;
+				transition: all 0.3s ease !important;
+			}
+			#contact input[type="submit"]:hover {
+				background-color: #ffffff !important;
+				color: #0d0d0d !important;
+			}
+
+			/* 7. MOUSE ICON & GALLERY */
 			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; transition: opacity 0.3s ease; }
 			.mouse { width: 30px; height: 50px; border: 2px solid #fff; border-radius: 15px; position: relative; margin: 0 auto 10px; }
 			.wheel { width: 4px; height: 8px; background: #fff; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 1.5s infinite; }
 			@keyframes scroll { 0% { top: 8px; opacity: 1; } 100% { top: 28px; opacity: 0; } }
 
-			/* 7. GALLERY & FORMS */
 			.gallery article .image img { transition: transform 0.6s ease !important; }
 			.gallery article .image:hover img { transform: scale(1.05) !important; }
 			.gallery article .image:before, .gallery article .image:after { display: none !important; }
-			#contact form input, #contact form textarea { background: transparent !important; border: none !important; border-bottom: 1px solid rgba(255,255,255,0.3) !important; color: #fff !important; }
-			#contact input[type="submit"] { background: transparent !important; border: 1px solid #fff !important; color: #fff !important; }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -140,7 +178,6 @@
 					<li>First Prize at the VII Concurso Internacional de Canto "Compostela Lírica" (2024).</li>
 					<li>First Prize and special prizes at the "Les Corts" International Music Competition, "BA Lirica" International Voice Competition, and "Josep Palet" Singing Contest (all in 2023).</li>
 				</ul>
-				<p>He was also a finalist at the Sumi Jo International Singing Competition (2024) and the Paris Opera Competition (2023).</p>
 				<header><br><h2>Education</h2></header>
 				<p>Born in Novi Sad, Serbia, Perišić holds a Master's degree in Singing from the Conservatorio di Musica "G. Tartini" in Trieste and a Bachelor's degree in Composition from the Academy of Arts in Novi Sad. He is an alumnus of the Teatro Real’s Crescendo young artist programme (2022) and has held scholarships from the Victoria de los Angeles, Montserrat Caballé, and Melanija Bugarinović Foundations.</p>
 			</div>
