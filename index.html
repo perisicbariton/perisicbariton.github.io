@@ -243,11 +243,16 @@
 			}
 			.gallery article .image:before, 
 			.gallery article .image:after {
-				display: none !important; /* Disables any built-in template color overlays */
+				display: none !important; 
 			}
-			/* Completely hides the useless white pop-up caption box */
+			/* Completely kills the white popup background and caption gap */
+			.poptrox-popup {
+				background: rgba(13, 13, 13, 0.95) !important; /* Deep cinematic dark grey */
+				padding-bottom: 0 !important; /* Kills the invisible space left for the caption */
+			}
 			.poptrox-popup .caption {
 				display: none !important;
+				height: 0 !important;
 			}
 
 		</style>
