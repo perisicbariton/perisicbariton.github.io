@@ -117,7 +117,7 @@
 				letter-spacing: 3px !important; 
 			}
 
-			/* 6. COMPLETELY INVISIBLE HEADER */
+			/* 6. COMPLETELY INVISIBLE DESKTOP HEADER */
 			#header {
 				background: transparent !important; 
 				background-color: transparent !important;
@@ -134,13 +134,6 @@
 			#header nav ul li a {
 				color: #ffffff !important;
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
-			}
-			/* Kill the mobile header background aggressively */
-			@media screen and (max-width: 980px) {
-				#header {
-					background: transparent !important;
-					border: none !important;
-				}
 			}
 
 			/* 7. GALLERY HOVER ZOOM */
@@ -182,22 +175,29 @@
 			#intro .content {
 				transform: translateY(120px) !important; 
 			}
+			/* Change the very base of the webpage to black so no white gaps can exist */
+			body, html {
+				background-color: #0d0d0d !important; 
+			}
 			/* Change Gallery and Contact sections from white to dark mode */
 			#media, #contact {
 				background-color: #0d0d0d !important; 
 			}
 			#media header h2, #media header p,
 			#contact header h2, #contact header p {
-			/* 10. COMPLETELY KILL MOBILE TITLE BAR & WHITE GAP */
-			#titleBar {
-				display: none !important; /* Nukes the element entirely */
-			}
-			body, html {
-				padding-top: 0 !important; /* Stops the JS from pushing the page down */
-				margin-top: 0 !important;
-				background-color: #0d0d0d !important; /* Ensures any background loading is dark, not white */
+				color: #ffffff !important; 
 			}
 
+			/* 10. MOBILE FIX: NUKE THE HEADER AND THE GAP */
+			@media screen and (max-width: 980px) {
+				#header {
+					display: none !important; /* Completely deletes the top bar on mobile */
+				}
+				#intro {
+					padding-top: 0 !important; /* Stops the template from pushing the photo down */
+					margin-top: 0 !important;
+				}
+			}
 
 		</style>
 	</head>
