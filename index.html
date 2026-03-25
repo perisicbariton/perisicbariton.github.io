@@ -12,71 +12,72 @@
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
 		<style>
-			/* 1. THE "NO-HEADER" PROTOCOL - NO RECTANGLES */
+			/* 1. THE "NO-HEADER" PROTOCOL */
 			#header, #header:before, #header:after, #titleBar {
 				display: none !important;
-				opacity: 0 !important;
 				visibility: hidden !important;
+				opacity: 0 !important;
 			}
-			body { padding-top: 0 !important; margin-top: 0 !important; }
-			html { scroll-behavior: smooth; background-color: #0d0d0d !important; }
+			body { padding-top: 0 !important; margin-top: 0 !important; overflow-x: hidden !important; }
+			html { background-color: #0d0d0d !important; }
 
-			/* 2. BACKGROUNDS & SECTION BLENDING */
+			/* 2. BACKGROUNDS */
 			#intro { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/intro-bg.jpg') !important; background-position: center; background-size: cover; }
 			#current { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important; background-position: center; background-size: cover; }
 			#highlights { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important; background-position: center; background-size: cover; }
 			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
 			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
-			/* 3. STABLE REVEAL ANIMATION (RESTORED TO ORIGINAL LOGIC) */
-			.reveal {
-				opacity: 0;
-				transform: translateY(30px);
-				background-color: rgba(15, 15, 15, 0);
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0);
-				transition: all 0.7s ease-out; /* Fast but smooth */
-			}
-			.reveal.active {
-				opacity: 1 !important;
-				transform: translateY(0) !important;
+			/* 3. THE ETHEREAL BLOOM (Integrated with Template Logic) */
+			.main .content {
 				background-color: rgba(15, 15, 15, 0.55) !important; 
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+				border: none !important;
+				transition: opacity 1.2s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1), background-color 1.2s ease, box-shadow 1.2s ease !important;
+			}
+			
+			/* Tapping into the template's native "inactive" state for the glide */
+			.main.inactive .content {
+				opacity: 0 !important;
+				transform: translateY(2.5em) !important;
+				background-color: rgba(15, 15, 15, 0) !important;
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important;
 			}
 
-			/* 4. TYPOGRAPHY */
+			/* 4. TYPOGRAPHY & COLORS */
 			body, p, a, li, span { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
 			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
-			.box.style2 h2, .box.style2 p, .box.style2 li, #media h2, #media p, #media h3, #contact h2, #contact p {
+			
+			.main .content h2, .main .content p, .main .content li, #media h3 {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
-			/* 5. LAYOUT & DESKTOP ALTERNATING */
+			/* 5. LAYOUT & DESKTOP ALIGNMENT */
 			#intro .content { padding-top: 200px !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
 
 			@media screen and (min-width: 981px) {
 				#intro { background-position: center 20% !important; }
-				.content.box.style2 { max-width: 45% !important; }
+				.main.style2 .content { max-width: 45% !important; }
 				.main.style2.right .content { margin-left: auto !important; margin-right: 0 !important; }
 				.main.style2.left .content { margin-right: auto !important; margin-left: 0 !important; }
-				#media .content, #contact .content { padding: 120px 0 !important; }
+				#media .content, #contact .content { padding: 100px 0 !important; }
 			}
 
 			@media screen and (max-width: 980px) {
 				#intro .content { padding-top: 150px !important; }
-				/* Mobile specific shadow adjustment to prevent edge-bleeding */
-				.reveal { box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0); }
-				.reveal.active { box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.55) !important; }
+				.main .content { box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.55) !important; }
 			}
 
-			/* 6. MOUSE, GALLERY & FORMS */
-			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; }
+			/* 6. MOUSE ICON */
+			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; transition: opacity 0.3s ease; }
 			.mouse { width: 30px; height: 50px; border: 2px solid #fff; border-radius: 15px; position: relative; margin: 0 auto 10px; }
 			.wheel { width: 4px; height: 8px; background: #fff; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 1.5s infinite; }
 			@keyframes scroll { 0% { top: 8px; opacity: 1; } 100% { top: 28px; opacity: 0; } }
 
+			/* 7. GALLERY & FORMS */
 			.gallery article .image img { transition: transform 0.6s ease !important; }
 			.gallery article .image:hover img { transform: scale(1.05) !important; }
 			.gallery article .image:before, .gallery article .image:after { display: none !important; }
@@ -100,7 +101,7 @@
 		</section>
 
 		<section id="current" class="main style2 right dark fullscreen">
-			<div class="content box style2 reveal">
+			<div class="content box style2">
 				<header><h2>Current & Recent Engagements (2026)</h2></header>
 				<p>Milan Perišić has started the 2026 season with high-level international visibility. In January, he returned to the Gran Teatre del Liceu as the Steuermann in a new production of <em>Tristan und Isolde</em> featuring Lise Davidsen. That same month, he was a Finalist at the prestigious 63rd Tenor Viñas Competition in Barcelona.</p>
 				<p>In February, Perišić made his house debut at ABAO Bilbao Opera as Cecil in Donizetti's <em>Maria Stuarda</em>. Later in the year, he returns to the Liceu to sing Schaunard in <em>La bohème</em> and will appear as the Heerrufer in Wagner's <em>Lohengrin</em> at Opera Tenerife in November.</p>
@@ -109,7 +110,7 @@
 		</section>
 
 		<section id="highlights" class="main style2 left dark fullscreen">
-			<div class="content box style2 reveal">
+			<div class="content box style2">
 				<header><h2>2024/2025 Season Highlights</h2></header>
 				<p>Perišić’s recent seasons have been defined by major principal roles and critical success. In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo, praising his "careful phrasing" and "homogeneous voice."</p>
 				<p>His interpretations of Puccini roles have garnered equal praise; performing Lescaut in <em>Manon Lescaut</em>, he was cited as the "best of the night" (Recomana), while his Marcello in <em>La bohème</em> confirmed his "resonant and brilliant" vocal quality (Olyrix).</p>
@@ -120,7 +121,7 @@
 		</section>
 
 		<section id="past" class="main style2 right dark fullscreen">
-			<div class="content box style2 reveal">
+			<div class="content box style2">
 				<header><h2>Past Seasons & Early Highlights</h2></header>
 				<p>Perišić’s earlier international career is marked by prestigious debuts. In 2023, he performed multiple roles in Shostakovich's <em>The Nose</em> at Teatro Real in Madrid and appeared as Scarus in the European premiere of John Adams' <em>Antony & Cleopatra</em> at the Gran Teatre del Liceu.</p>
 				<p>In 2022, he sang the title role in <em>Don Giovanni</em> in Spoleto and Perugia, and Alonso in the world premiere of J. Carmena's <em>El Orgullo de Quererte</em> at Teatros del Canal.</p>
@@ -129,7 +130,7 @@
 		</section>
 
 		<section id="acknowledgements" class="main style2 left dark fullscreen">
-			<div class="content box style2 reveal">
+			<div class="content box style2">
 				<header><h2>Acknowledgements</h2></header>
 				<p>Milan Perišić is a distinguished prize-winner in numerous international competitions. Recent accolades include:</p>
 				<ul>
@@ -139,6 +140,7 @@
 					<li>First Prize at the VII Concurso Internacional de Canto "Compostela Lírica" (2024).</li>
 					<li>First Prize and special prizes at the "Les Corts" International Music Competition, "BA Lirica" International Voice Competition, and "Josep Palet" Singing Contest (all in 2023).</li>
 				</ul>
+				<p>He was also a finalist at the Sumi Jo International Singing Competition (2024) and the Paris Opera Competition (2023).</p>
 				<header><br><h2>Education</h2></header>
 				<p>Born in Novi Sad, Serbia, Perišić holds a Master's degree in Singing from the Conservatorio di Musica "G. Tartini" in Trieste and a Bachelor's degree in Composition from the Academy of Arts in Novi Sad. He is an alumnus of the Teatro Real’s Crescendo young artist programme (2022) and has held scholarships from the Victoria de los Angeles, Montserrat Caballé, and Melanija Bugarinović Foundations.</p>
 			</div>
@@ -147,31 +149,31 @@
 
 		<section id="media" class="main style3 primary">
 			<div class="content">
-				<header class="reveal"><h2>Media</h2><p>Recent performances and stage highlights.</p></header>
-				<h3 class="reveal">Performances</h3>
+				<header><h2>Media</h2><p>Recent performances and stage highlights.</p></header>
+				<h3 style="text-align:center; margin-bottom:1.5em;">Performances</h3>
 				<div class="gallery">
-					<article class="from-left reveal"><a href="https://www.youtube.com/embed/JFgt5JELvT8" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/JFgt5JELvT8/hqdefault.jpg" alt="Video" /></a></article>
-					<article class="from-right reveal"><a href="https://www.youtube.com/embed/wHmu0FwvemM" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/wHmu0FwvemM/hqdefault.jpg" alt="Video" /></a></article>
-					<article class="from-left reveal"><a href="https://www.youtube.com/embed/ukMca3dNFeg" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/ukMca3dNFeg/hqdefault.jpg" alt="Video" /></a></article>
+					<article class="from-left"><a href="https://www.youtube.com/embed/JFgt5JELvT8" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/JFgt5JELvT8/hqdefault.jpg" alt="Video" /></a></article>
+					<article class="from-right"><a href="https://www.youtube.com/embed/wHmu0FwvemM" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/wHmu0FwvemM/hqdefault.jpg" alt="Video" /></a></article>
+					<article class="from-left"><a href="https://www.youtube.com/embed/ukMca3dNFeg" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/ukMca3dNFeg/hqdefault.jpg" alt="Video" /></a></article>
 				</div>
-				<h3 class="reveal">Photography</h3>
+				<h3 style="text-align:center; margin-top:2em; margin-bottom:1.5em;">Photography</h3>
 				<div class="gallery">
-					<article class="from-right reveal"><a href="images/fulls/241016-050©A Bofill.jpg" class="image fit"><img src="images/thumbs/241016-050©A Bofill.jpg" alt="Milan" /></a></article>
-					<article class="from-left reveal"><a href="images/fulls/260113-173©ABofill.jpg" class="image fit"><img src="images/thumbs/260113-173©ABofill.jpg" alt="Milan" /></a></article>
-					<article class="from-right reveal"><a href="images/fulls/260116-206©ABofill.jpg" class="image fit"><img src="images/thumbs/260116-206©ABofill.jpg" alt="Milan" /></a></article>
-					<article class="from-left reveal"><a href="images/fulls/T25 La Guineueta 139.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 139.jpg" alt="Milan" /></a></article>
-					<article class="from-right reveal"><a href="images/fulls/T25 La Guineueta 143.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 143.jpg" alt="Milan" /></a></article>
-					<article class="from-left reveal"><a href="images/fulls/T25 La Guineueta 153.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 153.jpg" alt="Milan" /></a></article>
-					<article class="from-right reveal"><a href="images/fulls/LCH1344.jpg" class="image fit"><img src="images/thumbs/LCH1344.jpg" alt="Milan" /></a></article>
-					<article class="from-left reveal"><a href="images/fulls/LOR0892.jpg" class="image fit"><img src="images/thumbs/LOR0892.jpg" alt="Milan" /></a></article>
+					<article class="from-right"><a href="images/fulls/241016-050©A Bofill.jpg" class="image fit"><img src="images/thumbs/241016-050©A Bofill.jpg" alt="Milan" /></a></article>
+					<article class="from-left"><a href="images/fulls/260113-173©ABofill.jpg" class="image fit"><img src="images/thumbs/260113-173©ABofill.jpg" alt="Milan" /></a></article>
+					<article class="from-right"><a href="images/fulls/260116-206©ABofill.jpg" class="image fit"><img src="images/thumbs/260116-206©ABofill.jpg" alt="Milan" /></a></article>
+					<article class="from-left"><a href="images/fulls/T25 La Guineueta 139.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 139.jpg" alt="Milan" /></a></article>
+					<article class="from-right"><a href="images/fulls/T25 La Guineueta 143.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 143.jpg" alt="Milan" /></a></article>
+					<article class="from-left"><a href="images/fulls/T25 La Guineueta 153.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 153.jpg" alt="Milan" /></a></article>
+					<article class="from-right"><a href="images/fulls/LCH1344.jpg" class="image fit"><img src="images/thumbs/LCH1344.jpg" alt="Milan" /></a></article>
+					<article class="from-left"><a href="images/fulls/LOR0892.jpg" class="image fit"><img src="images/thumbs/LOR0892.jpg" alt="Milan" /></a></article>
 				</div>
 			</div>
 		</section>
 
 		<section id="contact" class="main style4 secondary">
 			<div class="content">
-				<header class="reveal"><h2>Get in touch</h2></header>
-				<div class="box reveal">
+				<header><h2>Get in touch</h2></header>
+				<div class="box">
 					<form method="post" action="https://formspree.io/f/xlgorygo">
 						<div class="fields">
 							<div class="field half"><input type="text" name="firstname" placeholder="First Name" required /></div>
@@ -201,20 +203,5 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-				const observer = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("active");
-						} else {
-							entry.target.classList.remove("active");
-						}
-					});
-				}, { rootMargin: '0px 0px -50px 0px', threshold: 0.05 });
-				document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-			});
-		</script>
 	</body>
 </html>
