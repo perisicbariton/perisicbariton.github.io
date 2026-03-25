@@ -8,11 +8,7 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
 		<style>
-			/* ADJUSTED TRANSPARENCY:
-			   Previously used 'overlay.png' (pattern). Swapped to linear-gradient with RGBA
-			   Using rgba(0,0,0,0.45) which is 45% opaque / 55% transparent.
-			   This is roughly 15% more transparent than standard heavy overlays used for text readability.
-			*/
+			/* 1. OVERALL BACKGROUND TRANSPARENCY */
 			#intro {
 				background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/intro-bg.jpg') !important;
 				background-position: center;
@@ -37,6 +33,12 @@
 				background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/credentials-bg.jpg') !important;
 				background-position: center;
 				background-size: cover;
+			}
+
+			/* 2. TEXT BLOCK BACKGROUND TRANSPARENCY */
+			/* The 0.7 below controls the opacity. Lower it to 0.6 for more transparency, or raise to 0.8 for less. */
+			.box.style2 {
+				background-color: rgba(20, 20, 20, 0.7) !important; 
 			}
 		</style>
 	</head>
