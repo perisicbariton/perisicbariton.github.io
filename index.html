@@ -39,9 +39,22 @@
 				background-size: cover;
 			}
 
-			/* 2. TEXT BLOCK BACKGROUND TRANSPARENCY & TEXT READABILITY */
+			/* 2. TEXT BLOCK "ETHERAL" FADE & TAPERED EDGES */
 			.box.style2 {
-				background-color: rgba(20, 20, 20, 0.6) !important; 
+				background-color: rgba(15, 15, 15, 0) !important; /* Start fully transparent */
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important; /* Start with no shadow */
+				border: none !important;
+				transition: background-color 1.5s ease, box-shadow 1.5s ease !important;
+				backdrop-filter: blur(0px);
+				-webkit-backdrop-filter: blur(0px);
+			}
+			
+			/* When the section becomes active, the "glow" and background appear together */
+			.reveal.active .box.style2 {
+				background-color: rgba(15, 15, 15, 0.55) !important; 
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; /* Creates the tapered edge */
+				backdrop-filter: blur(4px);
+				-webkit-backdrop-filter: blur(4px);
 			}
 			
 			.box.style2, .box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
@@ -96,8 +109,8 @@
 			/* 4. SILKY SMOOTH SCROLL TRANSITIONS */
 			.reveal {
 				opacity: 0 !important;
-				transform: translateY(80px) !important;
-				transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
+				transform: translateY(50px) !important; /* Reduced distance for smoother feel */
+				transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
 			}
 			.reveal.active {
 				opacity: 1 !important;
@@ -126,11 +139,9 @@
 				border-bottom: none !important;
 				box-shadow: none !important;
 			}
-			/* Hide the small redundant name at the top left */
 			#header h1 {
 				display: none !important; 
 			}
-			/* Make sure the desktop menu links are white and readable */
 			#header nav ul li a {
 				color: #ffffff !important;
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
@@ -146,13 +157,11 @@
 			}
 
 			/* 8. SLEEK UNDERLINE FORM INPUTS & INVISIBLE BOX FIX */
-			/* Make the sloppy white box transparent */
 			#contact .box {
 				background: transparent !important;
 				border: none !important;
 				box-shadow: none !important;
 			}
-			/* Input fields */
 			#contact form input[type="text"], 
 			#contact form input[type="email"], 
 			#contact form textarea {
@@ -176,12 +185,11 @@
 				color: rgba(255, 255, 255, 0.5) !important;
 				opacity: 1; 
 			}
-			/* Sleek submit button */
 			#contact input[type="submit"] {
 				background-color: transparent !important;
 				border: 1px solid rgba(255, 255, 255, 0.5) !important;
 				color: #ffffff !important;
-				border-radius: 0 !important; /* Sharp corners to match inputs */
+				border-radius: 0 !important; 
 				transition: all 0.3s ease !important;
 				box-shadow: none !important;
 			}
@@ -192,15 +200,12 @@
 			}
 
 			/* 9. LAYOUT & DARK MODE FIXES */
-			/* Push the intro text down exactly 120px */
 			#intro .content {
 				transform: translateY(120px) !important; 
 			}
-			/* Change the very base of the webpage to black */
 			body, html {
 				background-color: #0d0d0d !important; 
 			}
-			/* Change Gallery and Contact sections from white to dark mode */
 			#media, #contact {
 				background-color: #0d0d0d !important; 
 			}
@@ -218,7 +223,6 @@
 			#titleBar {
 				display: none !important; 
 			}
-			/* Force the body to ignore JS padding */
 			body {
 				padding-top: 0 !important;
 			}
@@ -237,7 +241,6 @@
 			}
 
 			/* 11. GALLERY TINT & POPTROX CAPTION FIXES */
-			/* Kills the template's green background bleeding through thumbnails */
 			.gallery article .image {
 				background-color: #000000 !important; 
 			}
@@ -245,10 +248,9 @@
 			.gallery article .image:after {
 				display: none !important; 
 			}
-			/* Completely kills the white popup background and caption gap */
 			.poptrox-popup {
-				background: rgba(13, 13, 13, 0.95) !important; /* Deep cinematic dark grey */
-				padding-bottom: 0 !important; /* Kills the invisible space left for the caption */
+				background: rgba(13, 13, 13, 0.95) !important; 
+				padding-bottom: 0 !important; 
 			}
 			.poptrox-popup .caption {
 				display: none !important;
@@ -308,7 +310,7 @@
 						<h2>2024/2025 Season Highlights</h2>
 					</header>
 					<p>Perišić’s recent seasons have been defined by major principal roles and critical success. In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo, praising his "careful phrasing" and "homogeneous voice."</p>
-					<p>His interpretations of Puccini roles have garnered equal praise; performing Lescaut in <em>Manon Lescaut</em>, he was cited as the "best of the night" (Recomana), while his Marcello in <em>La bohème</em> confirmed his "resonant and brilliant" vocal quality (Olyrix).</p>
+					<p>His interpretations of Puccini roles have garnered equal praise; performing Lescaut in <em>Manon Lexcaut</em>, he was cited as the "best of the night" (Recomana), while his Marcello in <em>La bohème</em> confirmed his "resonant and brilliant" vocal quality (Olyrix).</p>
 					<p>His performance as Dottore Malatesta in <em>Don Pasquale</em> at the Teatre Principal de Palma was also singled out by critics, who noted his "very cared-for and expressive interpretation" (Ópera Actual). At the Gran Teatre del Liceu, his role as Harašta in <em>The Cunning Little Vixen</em> was praised as a standout performance in the cast (EnPlatea / Llegir.cat).</p>
 					<p>On the concert stage, his performance of Orff's <em>Carmina Burana</em> with the Royal Symphonic Orchestra of Seville at Teatro de la Maestranza was celebrated for its "magnificent prosody" and "beautiful, flexible singing line" (Diario de Sevilla). Other key engagements in the 2025 season included his debut at the Opéra Bastille in Paris as the Député flamand in <em>Don Carlo</em> and returning to the Liceu as Bernardo in <em>West Side Story</em>.</p>
 				</div>
@@ -359,7 +361,6 @@
 
 					<h3 class="reveal">Performances</h3>
 					<div class="gallery reveal">
-							
 							<article class="from-left">
 								<a href="https://www.youtube.com/embed/JFgt5JELvT8" data-poptrox="iframe,800x400" class="image fit">
 									<img src="https://img.youtube.com/vi/JFgt5JELvT8/hqdefault.jpg" alt="Video Thumbnail" />
@@ -377,29 +378,25 @@
 									<img src="https://img.youtube.com/vi/ukMca3dNFeg/hqdefault.jpg" alt="Video Thumbnail" />
 								</a>
 							</article>
-							
 					</div>
 
 					<h3 class="reveal" style="margin-top: 3em;">Photography</h3>
 					<div class="gallery reveal">
-							
 							<article class="from-right">
 								<a href="images/fulls/performance1.jpg" class="image fit">
-									<img src="images/thumbs/performance1-thumb.jpg" title="Live at Gran Teatre del Liceu" alt="Stage Performance" />
+									<img src="images/thumbs/performance1-thumb.jpg" alt="Stage Performance" />
 								</a>
 							</article>
 
 							<article class="from-left">
 								<a href="images/fulls/headshot.jpg" class="image fit">
-									<img src="images/thumbs/headshot-thumb.jpg" title="Milan Perišić" alt="Milan Headshot" />
+									<img src="images/thumbs/headshot-thumb.jpg" alt="Milan Headshot" />
 								</a>
 							</article>
-
 					</div>
 
 				</div>
 			</section>
-
 
 		<section id="contact" class="main style4 secondary">
 				<div class="content">
@@ -423,16 +420,13 @@
 			</section>
 
 		<footer id="footer">
-
 				<ul class="icons">
 						<li><a href="https://www.instagram.com/milanperisic_baritone" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
 						<li><a href="https://www.youtube.com/@MilanPerisicbaritone" class="icon brands fa-youtube" target="_blank"><span class="label">YouTube</span></a></li>
 					</ul>
-
 				<ul class="copyright">
 						<li>&copy; Milan Perišić. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
-
 			</footer>
 
 			<script src="assets/js/jquery.min.js"></script>
@@ -466,6 +460,5 @@
 					});
 				});
 			</script>
-
 	</body>
 </html>
