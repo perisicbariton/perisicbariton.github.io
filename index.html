@@ -12,255 +12,84 @@
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
 		<style>
-			/* 1. OVERALL BACKGROUND TRANSPARENCY & EDGE BLENDING */
-			#intro {
-				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/intro-bg.jpg') !important;
-				background-position: center;
-				background-size: cover;
-			}
-			#current {
-				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important;
-				background-position: center;
-				background-size: cover;
-			}
-			#highlights {
-				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important;
-				background-position: center;
-				background-size: cover;
-			}
-			#past {
-				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important;
-				background-position: center;
-				background-size: cover;
-			}
-			#acknowledgements {
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important;
-    background-position: center;
-    background-size: cover;
-}
+			/* 1. BACKGROUNDS & BLENDING */
+			#intro { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/intro-bg.jpg') !important; background-position: center; background-size: cover; }
+			#current { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important; background-position: center; background-size: cover; }
+			#highlights { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important; background-position: center; background-size: cover; }
+			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
+			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
-
-			/* 2. TEXT BLOCK "ETHEREAL" FADE & TAPERED EDGES (NO BLUR) */
+			/* 2. ETHEREAL TEXT BOXES (NO BLUR) */
 			.box.style2 {
-				background-color: rgba(15, 15, 15, 0) !important; 
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important; 
-				border: none !important;
-				/* No backdrop-filter here to keep image clear */
-				transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
-			}
-			
-			/* Background and glow fade in only when section is active */
-			.reveal.active.box.style2 {
 				background-color: rgba(15, 15, 15, 0.55) !important; 
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+				border: none !important;
+				transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
 			}
-			
 			.box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 			}
 
-			/* 3. SCROLL ANIMATION (MOUSE ICON) */
-			.scroll-wrapper {
-				display: inline-block;
-				margin-top: 30px;
-				text-decoration: none;
-				border-bottom: none !important;
-				opacity: 0.8;
-				transition: opacity 0.3s ease;
-			}
-			.scroll-wrapper:hover {
-				opacity: 1;
-			}
-			.mouse {
-				width: 30px;
-				height: 50px;
-				border: 2px solid #ffffff;
-				border-radius: 15px;
-				position: relative;
-				margin: 0 auto 10px auto;
-				box-shadow: 0px 0px 5px rgba(0,0,0,0.5); 
-			}
-			.wheel {
-				width: 4px;
-				height: 8px;
-				background-color: #ffffff;
-				border-radius: 2px;
-				position: absolute;
-				top: 8px;
-				left: 50%;
-				transform: translateX(-50%);
-				animation: scrollWheel 1.5s infinite;
-			}
-			.scroll-text {
-				font-size: 0.85em;
-				text-transform: uppercase;
-				letter-spacing: 2px;
-				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
-			}
-			
-			@keyframes scrollWheel {
-				0% { top: 8px; opacity: 1; }
-				100% { top: 28px; opacity: 0; }
-			}
+			/* 3. MOUSE ICON */
+			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border-bottom: none !important; opacity: 0.8; transition: opacity 0.3s ease; }
+			.scroll-wrapper:hover { opacity: 1; }
+			.mouse { width: 30px; height: 50px; border: 2px solid #ffffff; border-radius: 15px; position: relative; margin: 0 auto 10px auto; box-shadow: 0px 0px 5px rgba(0,0,0,0.5); }
+			.wheel { width: 4px; height: 8px; background-color: #ffffff; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scrollWheel 1.5s infinite; }
+			.scroll-text { font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9); }
+			@keyframes scrollWheel { 0% { top: 8px; opacity: 1; } 100% { top: 28px; opacity: 0; } }
 
-			/* 4. SILKY SMOOTH SCROLL TRANSITIONS */
-			.reveal {
-				opacity: 0 !important;
-				transform: translateY(50px) !important;
-				transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
-			}
-			.reveal.active {
-				opacity: 1 !important;
-				transform: translateY(0) !important;
-			}
+			/* 4. REVEAL ANIMATION */
+			.reveal { opacity: 0 !important; transform: translateY(50px) !important; transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+			.reveal.active { opacity: 1 !important; transform: translateY(0) !important; }
 
-			/* 5. PREMIUM MINIMALIST TYPOGRAPHY */
-			body, p, a, li, input, textarea, span, .scroll-text {
-				font-family: 'Jost', sans-serif !important;
-				font-weight: 300 !important; 
-				line-height: 1.8; 
-			}
-			h1, h2, h3, h4, h5, h6 {
-				font-family: 'Cormorant Garamond', serif !important;
-				font-weight: 400 !important;
-				text-transform: uppercase !important; 
-				letter-spacing: 3px !important; 
-			}
+			/* 5. TYPOGRAPHY */
+			body, p, a, li, input, textarea, span, .scroll-text { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
+			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
 
-			/* 6. COMPLETELY INVISIBLE DESKTOP HEADER */
-			#header {
-				background: transparent !important; 
-				background-color: transparent !important;
-				backdrop-filter: none !important;
-				-webkit-backdrop-filter: none !important;
-				border-bottom: none !important;
-				box-shadow: none !important;
-			}
-			#header h1 {
-				display: none !important; 
-			}
-			#header nav ul li a {
-				color: #ffffff !important;
-				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
-			}
+			/* 6. HEADER FIXES */
+			#header { background: transparent !important; border-bottom: none !important; box-shadow: none !important; }
+			#header h1 { display: none !important; }
+			#header nav ul li a { color: #ffffff !important; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important; }
 
-			/* 7. GALLERY HOVER ZOOM */
-			.gallery article .image img {
-				transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease !important;
-			}
-			.gallery article .image:hover img {
-				transform: scale(1.08) !important;
-				filter: brightness(0.6) !important;
-			}
+			/* 7. GALLERY HOVER */
+			.gallery article .image img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease !important; }
+			.gallery article .image:hover img { transform: scale(1.08) !important; filter: brightness(0.6) !important; }
 
-			/* 8. SLEEK UNDERLINE FORM INPUTS & INVISIBLE BOX FIX */
-			#contact .box {
-				background: transparent !important;
-				border: none !important;
-				box-shadow: none !important;
+			/* 8. CONTACT FORM */
+			#contact .box { background: transparent !important; border: none !important; box-shadow: none !important; }
+			#contact form input[type="text"], #contact form input[type="email"], #contact form textarea {
+				background: transparent !important; border: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+				border-radius: 0 !important; color: #ffffff !important; box-shadow: none !important; padding-left: 5px !important; transition: all 0.3s ease !important;
 			}
-			#contact form input[type="text"], 
-			#contact form input[type="email"], 
-			#contact form textarea {
-				background: transparent !important;
-				border: none !important;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-				border-radius: 0 !important;
-				color: #ffffff !important;
-				box-shadow: none !important;
-				padding-left: 5px !important;
-				transition: border-color 0.3s ease, background-color 0.3s ease !important;
-			}
-			#contact form input:focus, 
-			#contact form textarea:focus {
-				border-bottom: 1px solid #ffffff !important;
-				background: rgba(255, 255, 255, 0.05) !important;
-				outline: none !important;
-			}
-			#contact form input::placeholder, 
-			#contact form textarea::placeholder {
-				color: rgba(255, 255, 255, 0.5) !important;
-				opacity: 1; 
-			}
-			#contact input[type="submit"] {
-				background-color: transparent !important;
-				border: 1px solid rgba(255, 255, 255, 0.5) !important;
-				color: #ffffff !important;
-				border-radius: 0 !important; 
-				transition: all 0.3s ease !important;
-				box-shadow: none !important;
-			}
-			#contact input[type="submit"]:hover {
-				background-color: #ffffff !important;
-				color: #0d0d0d !important;
-				border-color: #ffffff !important;
-			}
+			#contact form input:focus, #contact form textarea:focus { border-bottom: 1px solid #ffffff !important; background: rgba(255, 255, 255, 0.05) !important; outline: none !important; }
+			#contact input[type="submit"] { background-color: transparent !important; border: 1px solid rgba(255, 255, 255, 0.5) !important; color: #ffffff !important; transition: all 0.3s ease !important; }
+			#contact input[type="submit"]:hover { background-color: #ffffff !important; color: #0d0d0d !important; }
 
-			/* 9. LAYOUT & DARK MODE FIXES */
-			#intro .content {
-				padding-top: 120px !important; 
-			}
-			body, html {
-				background-color: #0d0d0d !important; 
-			}
-			#media, #contact {
-				background-color: #0d0d0d !important; 
-			}
-			#media header h2, #media header p,
-			#contact header h2, #contact header p, #media h3 {
-				color: #ffffff !important; 
-			}
-			#media h3 {
-				margin-top: 2em;
-				margin-bottom: 1em;
-				letter-spacing: 2px !important;
-			}
+			/* 9. DARK MODE & LAYOUT */
+			#intro .content { padding-top: 120px !important; }
+			body, html, #media, #contact { background-color: #0d0d0d !important; }
+			#media header h2, #media header p, #contact header h2, #contact header p, #media h3 { color: #ffffff !important; }
+			#media h3 { margin-top: 2em; margin-bottom: 1em; letter-spacing: 2px !important; }
 
-			/* 10. THE ULTIMATE MOBILE GAP FIX */
-			#titleBar {
-				display: none !important; 
-			}
-			body {
-				padding-top: 0 !important;
-			}
+			/* 10. MOBILE FIXES */
+			#titleBar { display: none !important; }
+			body { padding-top: 0 !important; }
 			@media screen and (max-width: 980px) {
-				#header {
-					display: none !important; 
-				}
-				body {
-					padding-top: 0 !important; 
-				}
-				#intro {
-					padding-top: 0 !important; 
-					margin-top: 0 !important;
-					min-height: 100vh !important; 
-				}
+				#header { display: none !important; }
+				#intro { padding-top: 0 !important; margin-top: 0 !important; min-height: 100vh !important; }
 			}
 
-			/* 11. GALLERY TINT & POPTROX CAPTION FIXES */
-			.gallery article .image {
-				background-color: #000000 !important; 
-			}
-			.gallery article .image:before, 
-			.gallery article .image:after {
-				display: none !important; 
-			}
-			.poptrox-popup {
-				background: rgba(13, 13, 13, 0.95) !important; 
-				padding-bottom: 0 !important; 
-			}
-			.poptrox-popup .caption {
-				display: none !important;
-				height: 0 !important;
-			}
-
+			/* 11. POPTROX & TINT FIXES */
+			.gallery article .image { background-color: #000000 !important; }
+			.gallery article .image:before, .gallery article .image:after { display: none !important; }
+			.poptrox-popup { background: rgba(13, 13, 13, 0.95) !important; padding-bottom: 0 !important; }
+			.poptrox-popup .caption { display: none !important; height: 0 !important; }
 		</style>
 	</head>
 	<body class="is-preload">
 
 		<header id="header">
-				<h1>Milan Perišić</h1>
 				<nav>
 					<ul>
 						<li><a href="#intro">Home</a></li>
@@ -276,15 +105,11 @@
 
 		<section id="intro" class="main style1 dark fullscreen">
 				<div class="content">
-					<header>
-						<h2>Milan Perišić</h2>
-					</header>
+					<header><h2>Milan Perišić</h2></header>
 					<p>Baritone</p>
 					<footer>
 						<a href="#current" class="scroll-wrapper scrolly">
-							<div class="mouse">
-								<div class="wheel"></div>
-							</div>
+							<div class="mouse"><div class="wheel"></div></div>
 							<div class="scroll-text">Discover</div>
 						</a>
 					</footer>
@@ -293,164 +118,94 @@
 
 		<section id="current" class="main style2 right dark fullscreen">
 				<div class="content box style2 reveal">
-					<header>
-						<h2>Current & Recent Engagements (2026)</h2>
-					</header>
-					<p>Milan Perišić has started the 2026 season with high-level international visibility. In January, he returned to the Gran Teatre del Liceu as the Steuermann in a new production of <em>Tristan und Isolde</em> featuring Lise Davidsen. That same month, he was a Finalist at the prestigious 63rd Tenor Viñas Competition in Barcelona.</p>
-					<p>In February, Perišić made his house debut at ABAO Bilbao Opera as Cecil in Donizetti's <em>Maria Stuarda</em>. Later in the year, he returns to the Liceu to sing Schaunard in <em>La bohème</em> and will appear as the Heerrufer in Wagner's <em>Lohengrin</em> at Opera Tenerife in November.</p>
+					<header><h2>Current & Recent Engagements (2026)</h2></header>
+					<p>Milan Perišić has started the 2026 season with high-level international visibility. In January, he returned to the Gran Teatre del Liceu as the Steuermann in a new production of <em>Tristan und Isolde</em>. That same month, he was a Finalist at the 63rd Tenor Viñas Competition in Barcelona.</p>
+					<p>In February, he made his house debut at ABAO Bilbao Opera as Cecil in Donizetti's <em>Maria Stuarda</em>. Later in the year, he returns to the Liceu for <em>La bohème</em> and will appear as the Heerrufer in <em>Lohengrin</em> at Opera Tenerife.</p>
 				</div>
 				<a href="#highlights" class="button style2 down anchored">Next</a>
 			</section>
 
 		<section id="highlights" class="main style2 left dark fullscreen">
 				<div class="content box style2 reveal">
-					<header>
-						<h2>2024/2025 Season Highlights</h2>
-					</header>
-					<p>Perišić’s recent seasons have been defined by major principal roles and critical success. In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo, praising his "careful phrasing" and "homogeneous voice."</p>
-					<p>His interpretations of Puccini roles have garnered equal praise; performing Lescaut in <em>Manon Lexcaut</em>, he was cited as the "best of the night" (Recomana), while his Marcello in <em>La bohème</em> confirmed his "resonant and brilliant" vocal quality (Olyrix).</p>
-					<p>His performance as Dottore Malatesta in <em>Don Pasquale</em> at the Teatre Principal de Palma was also singled out by critics, who noted his "very cared-for and expressive interpretation" (Ópera Actual). At the Gran Teatre del Liceu, his role as Harašta in <em>The Cunning Little Vixen</em> was praised as a standout performance in the cast (EnPlatea / Llegir.cat).</p>
-					<p>On the concert stage, his performance of Orff's <em>Carmina Burana</em> with the Royal Symphonic Orchestra of Seville at Teatro de la Maestranza was celebrated for its "magnificent prosody" and "beautiful, flexible singing line" (Diario de Sevilla). Other key engagements in the 2025 season included his debut at the Opéra Bastille in Paris as the Député flamand in <em>Don Carlo</em> and returning to the Liceu as Bernardo in <em>West Side Story</em>.</p>
+					<header><h2>2024/2025 Season Highlights</h2></header>
+					<p>In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo. His Puccini interpretations have garnered equal praise; performing Lescaut in <em>Manon Lescaut</em> and Marcello in <em>La bohème</em> (Olyrix).</p>
+					<p>Key engagements included his debut at the Opéra Bastille as the Député flamand in <em>Don Carlo</em> and returning to the Liceu as Bernardo in <em>West Side Story</em>.</p>
 				</div>
 				<a href="#past" class="button style2 down anchored">Next</a>
 			</section>
 
 		<section id="past" class="main style2 right dark fullscreen">
 				<div class="content box style2 reveal">
-					<header>
-						<h2>Past Seasons & Early Highlights</h2>
-					</header>
-					<p>Perišić’s earlier international career is marked by prestigious debuts. In 2023, he performed multiple roles in Shostakovich's <em>The Nose</em> at Teatro Real in Madrid and appeared as Scarus in the European premiere of John Adams' <em>Antony & Cleopatra</em> at the Gran Teatre del Liceu.</p>
-					<p>In 2022, he sang the title role in <em>Don Giovanni</em> in Spoleto and Perugia, and Alonso in the world premiere of J. Carmena's <em>El Orgullo de Quererte</em> at Teatros del Canal.</p>
+					<header><h2>Past Seasons & Early Highlights</h2></header>
+					<p>In 2023, he performed in Shostakovich's <em>The Nose</em> at Teatro Real and <em>Antony & Cleopatra</em> at the Liceu. In 2022, he sang the title role in <em>Don Giovanni</em> in Spoleto and Perugia.</p>
 				</div>
 				<a href="#acknowledgements" class="button style2 down anchored">Next</a>
 			</section>
 
 		<section id="acknowledgements" class="main style2 left dark fullscreen">
 				<div class="content box style2 reveal">
-					<header>
-						<h2>Acknowledgements</h2>
-					</header>
-					<p>Milan Perišić is a distinguished prize-winner in numerous international competitions. Recent accolades include:</p>
+					<header><h2>Acknowledgements</h2></header>
 					<ul>
 						<li>Finalist at the Tenor Viñas Competition (2026).</li>
-						<li>"Filipe de Sousa" Special Prize at the 2nd Cascais Opera International Competition (2025).</li>
-						<li>Second Prize at the XX Certamen de Nuevas Voces Ciudad de Sevilla (2024).</li>
-						<li>First Prize at the VII Concurso Internacional de Canto "Compostela Lírica" (2024).</li>
-						<li>First Prize and special prizes at the "Les Corts" International Music Competition, "BA Lirica" International Voice Competition, and "Josep Palet" Singing Contest (all in 2023).</li>
+						<li>"Filipe de Sousa" Special Prize at the 2nd Cascais Opera Competition (2025).</li>
+						<li>First Prize at the VII "Compostela Lírica" (2024).</li>
+						<li>First Prize at "Les Corts", "BA Lirica", and "Josep Palet" (2023).</li>
 					</ul>
-					<p>He was also a finalist at the Sumi Jo International Singing Competition (2024) and the Paris Opera Competition (2023).</p>
-					
-					<header>
-						<br>
-						<h2>Education</h2>
-					</header>
-					<p>Born in Novi Sad, Serbia, Perišić holds a Master's degree in Singing from the Conservatorio di Musica "G. Tartini" in Trieste and a Bachelor's degree in Composition from the Academy of Arts in Novi Sad. He is an alumnus of the Teatro Real’s Crescendo young artist programme (2022) and has held scholarships from the Victoria de los Angeles, Montserrat Caballé, and Melanija Bugarinović Foundations.</p>
+					<header><br><h2>Education</h2></header>
+					<p>Born in Novi Sad, Serbia, Perišić holds a Master's from Conservatorio "G. Tartini" and is an alumnus of Teatro Real’s Crescendo programme.</p>
 				</div>
 				<a href="#media" class="button style2 down anchored">Next</a>
 			</section>
 
 		<section id="media" class="main style3 primary">
 				<div class="content">
-					<header>
-						<h2>Media</h2>
-						<p>Recent performances and stage highlights.</p>
-					</header>
+					<header><h2>Media</h2><p>Recent performances and stage highlights.</p></header>
 
 					<h3 class="reveal">Performances</h3>
 					<div class="gallery reveal">
 							<article class="from-left">
 								<a href="https://www.youtube.com/embed/JFgt5JELvT8" data-poptrox="iframe,800x400" class="image fit">
-									<img src="https://img.youtube.com/vi/JFgt5JELvT8/hqdefault.jpg" alt="Video Thumbnail" />
+									<img src="https://img.youtube.com/vi/JFgt5JELvT8/hqdefault.jpg" alt="Video" />
 								</a>
 							</article>
-
 							<article class="from-right">
 								<a href="https://www.youtube.com/embed/wHmu0FwvemM" data-poptrox="iframe,800x400" class="image fit">
-									<img src="https://img.youtube.com/vi/wHmu0FwvemM/hqdefault.jpg" alt="Video Thumbnail" />
+									<img src="https://img.youtube.com/vi/wHmu0FwvemM/hqdefault.jpg" alt="Video" />
 								</a>
 							</article>
-
 							<article class="from-left">
 								<a href="https://www.youtube.com/embed/ukMca3dNFeg" data-poptrox="iframe,800x400" class="image fit">
-									<img src="https://img.youtube.com/vi/ukMca3dNFeg/hqdefault.jpg" alt="Video Thumbnail" />
+									<img src="https://img.youtube.com/vi/ukMca3dNFeg/hqdefault.jpg" alt="Video" />
 								</a>
 							</article>
 					</div>
 
 					<h3 class="reveal" style="margin-top: 3em;">Photography</h3>
 					<div class="gallery reveal">
-							
-							<article class="from-left">
-								<a href="images/fulls/241016-050©A Bofill.jpg" class="image fit">
-									<img src="images/thumbs/241016-050©A Bofill.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-
-							<article class="from-right">
-								<a href="images/fulls/260113-173©ABofill.jpg" class="image fit">
-									<img src="images/thumbs/260113-173©ABofill.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-
-							<article class="from-left">
-								<a href="images/fulls/260116-206©ABofill.jpg" class="image fit">
-									<img src="images/thumbs/260116-206©ABofill.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-
-							<article class="from-right">
-								<a href="images/fulls/T25 La Guineueta 139.jpg" class="image fit">
-									<img src="images/thumbs/T25 La Guineueta 139.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-							
-							<article class="from-left">
-								<a href="images/fulls/T25 La Guineueta 143.jpg" class="image fit">
-									<img src="images/thumbs/T25 La Guineueta 143.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-							
-							<article class="from-right">
-								<a href="images/fulls/T25 La Guineueta 153.jpg" class="image fit">
-									<img src="images/thumbs/T25 La Guineueta 153.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-							
-							<article class="from-left">
-								<a href="images/fulls/_LCH1344.jpg" class="image fit">
-									<img src="images/thumbs/_LCH1344.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-							
-							<article class="from-right">
-								<a href="images/fulls/_LOR0892.jpg" class="image fit">
-									<img src="images/thumbs/_LOR0892.jpg" alt="Milan Perišić" />
-								</a>
-							</article>
-
+							<article class="from-right"><a href="images/fulls/241016-050©A Bofill.jpg" class="image fit"><img src="images/thumbs/241016-050©A Bofill.jpg" alt="Milan" /></a></article>
+							<article class="from-left"><a href="images/fulls/260113-173©ABofill.jpg" class="image fit"><img src="images/thumbs/260113-173©ABofill.jpg" alt="Milan" /></a></article>
+							<article class="from-right"><a href="images/fulls/260116-206©ABofill.jpg" class="image fit"><img src="images/thumbs/260116-206©ABofill.jpg" alt="Milan" /></a></article>
+							<article class="from-left"><a href="images/fulls/T25 La Guineueta 139.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 139.jpg" alt="Milan" /></a></article>
+							<article class="from-right"><a href="images/fulls/T25 La Guineueta 143.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 143.jpg" alt="Milan" /></a></article>
+							<article class="from-left"><a href="images/fulls/T25 La Guineueta 153.jpg" class="image fit"><img src="images/thumbs/T25 La Guineueta 153.jpg" alt="Milan" /></a></article>
+							<article class="from-right"><a href="images/fulls/_LCH1344.jpg" class="image fit"><img src="images/thumbs/_LCH1344.jpg" alt="Milan" /></a></article>
+							<article class="from-left"><a href="images/fulls/_LOR0892.jpg" class="image fit"><img src="images/thumbs/_LOR0892.jpg" alt="Milan" /></a></article>
 					</div>
-
-
 				</div>
 			</section>
 
 		<section id="contact" class="main style4 secondary">
 				<div class="content">
-					<header>
-						<h2>Get in touch</h2>
-					</header>
+					<header><h2>Get in touch</h2></header>
 					<div class="box reveal">
 						<form method="post" action="https://formspree.io/f/xlgorygo">
 							<div class="fields">
 								<div class="field half"><input type="text" name="firstname" placeholder="First Name" required /></div>
 								<div class="field half"><input type="text" name="lastname" placeholder="Last Name" required /></div>
 								<div class="field"><input type="email" name="email" placeholder="Email" required /></div>
-								<div class="field"><textarea name="message" placeholder="Write a message" rows="6" required></textarea></div>
+								<div class="field"><textarea name="message" placeholder="Message" rows="6" required></textarea></div>
 							</div>
-							<ul class="actions special">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
+							<ul class="actions special"><li><input type="submit" value="Send Message" /></li></ul>
 						</form>
 					</div>
 				</div>
@@ -461,9 +216,7 @@
 						<li><a href="https://www.instagram.com/milanperisic_baritone" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
 						<li><a href="https://www.youtube.com/@MilanPerisicbaritone" class="icon brands fa-youtube" target="_blank"><span class="label">YouTube</span></a></li>
 					</ul>
-				<ul class="copyright">
-						<li>&copy; Milan Perišić. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
+				<ul class="copyright"><li>&copy; Milan Perišić. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li></ul>
 			</footer>
 
 			<script src="assets/js/jquery.min.js"></script>
@@ -478,23 +231,13 @@
 			<script>
 				document.addEventListener("DOMContentLoaded", function() {
 					const reveals = document.querySelectorAll(".reveal");
-					
-					const revealObserver = new IntersectionObserver((entries, observer) => {
+					const revealObserver = new IntersectionObserver((entries) => {
 						entries.forEach(entry => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add("active");
-							} else {
-								entry.target.classList.remove("active");
-							}
+							if (entry.isIntersecting) { entry.target.classList.add("active"); }
+							else { entry.target.classList.remove("active"); }
 						});
-					}, {
-						rootMargin: "0px 0px -100px 0px", 
-						threshold: 0
-					});
-
-					reveals.forEach(reveal => {
-						revealObserver.observe(reveal);
-					});
+					}, { rootMargin: "0px 0px -100px 0px", threshold: 0 });
+					reveals.forEach(reveal => revealObserver.observe(reveal));
 				});
 			</script>
 	</body>
