@@ -12,7 +12,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
 		<style>
-			/* 1. THE "NO-HEADER" PROTOCOL - Kills the rectangle and ghost bars */
+			/* 1. THE "NO-HEADER" PROTOCOL */
 			#header, #header:before, #header:after, #titleBar {
 				display: none !important;
 				visibility: hidden !important;
@@ -28,21 +28,29 @@
 			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
 			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
-			/* 3. FLUIDITY & TRANSITIONS (Mobile Optimized) */
-			.main .content {
+			/* 3. FLUIDITY & THE ETHEREAL BLOOM (Mobile & Desktop Optimized) */
+			/* We target all sections EXCEPT the intro for the dark box effect */
+			.main:not(#intro) .content {
 				opacity: 1;
 				transform: translateY(0);
 				background-color: rgba(15, 15, 15, 0.55) !important; 
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
 				border: none !important;
-				/* Smoother, slightly longer timing for a "drifting" feel */
 				transition: opacity 1.2s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1), background-color 1.2s ease, box-shadow 1.2s ease !important;
 			}
 			
-			/* Uses the template's internal 'inactive' class to create the reveal */
+			/* Animation for the intro text (No shadow box) */
+			#intro .content {
+				opacity: 1;
+				transform: translateY(0);
+				transition: opacity 1.5s ease, transform 1.2s ease !important;
+				padding-top: 200px !important;
+			}
+
+			/* Reveal Logic: How they look before you scroll to them */
 			.main.inactive .content {
 				opacity: 0 !important;
-				transform: translateY(20px) !important;
+				transform: translateY(30px) !important;
 				background-color: rgba(15, 15, 15, 0) !important;
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important;
 			}
@@ -51,19 +59,18 @@
 			body, p, a, li, span { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
 			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
 			
-			.main .content h2, .main .content p, .main .content li, #media h3 {
+			.main .content h2, .main .content p, .main .content li, #media h3, #contact h2 {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
 			/* 5. LAYOUT & DESKTOP ALTERNATING SIDES */
-			#intro .content { padding-top: 200px !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
 
 			@media screen and (min-width: 981px) {
 				#intro { background-position: center 20% !important; }
-				.main.style2 .content { max-width: 45% !important; }
+				.main.style2:not(#intro) .content { max-width: 45% !important; }
 				.main.style2.right .content { margin-left: auto !important; margin-right: 0 !important; }
 				.main.style2.left .content { margin-right: auto !important; margin-left: 0 !important; }
 				#media .content, #contact .content { padding: 120px 0 !important; }
@@ -71,11 +78,10 @@
 
 			@media screen and (max-width: 980px) {
 				#intro .content { padding-top: 150px !important; }
-				/* Mobile specific shadow to prevent edge-bleeding */
-				.main .content { box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.55) !important; }
+				.main:not(#intro) .content { box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.55) !important; }
 			}
 
-			/* 6. THE CONTACT BOX FIX (Solving the white box issue) */
+			/* 6. THE CONTACT BOX FIX */
 			#contact .box {
 				background: transparent !important;
 				background-color: transparent !important;
