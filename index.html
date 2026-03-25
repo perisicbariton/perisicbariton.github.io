@@ -90,15 +90,16 @@
 				100% { top: 28px; opacity: 0; }
 			}
 
-			/* 4. SCROLL TRANSITIONS FOR SECTIONS */
+			/* 4. SILKY SMOOTH SCROLL TRANSITIONS */
 			.reveal {
-				opacity: 0;
-				transform: translateY(50px); /* Starts slightly lower */
-				transition: all 0.8s ease-out; /* Smooth transition */
+				opacity: 0 !important;
+				transform: translateY(80px) !important;
+				/* Forced !important transition with an elegant cubic-bezier curve */
+				transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
 			}
 			.reveal.active {
-				opacity: 1;
-				transform: translateY(0); /* Glides into place */
+				opacity: 1 !important;
+				transform: translateY(0) !important;
 			}
 
 		</style>
@@ -285,12 +286,13 @@
 							if (entry.isIntersecting) {
 								entry.target.classList.add("active");
 							} else {
-								// Optional: Remove class when scrolling back up so it animates again
 								entry.target.classList.remove("active");
 							}
 						});
 					}, {
-						threshold: 0.2 // Triggers the animation when 20% of the box is visible
+						// This triggers the animation when the element is 100px from the bottom of the viewport
+						rootMargin: "0px 0px -100px 0px", 
+						threshold: 0
 					});
 
 					reveals.forEach(reveal => {
