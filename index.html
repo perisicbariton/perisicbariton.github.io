@@ -188,19 +188,16 @@
 			}
 			#media header h2, #media header p,
 			#contact header h2, #contact header p {
-				color: #ffffff !important; 
+			/* 10. COMPLETELY KILL MOBILE TITLE BAR & WHITE GAP */
+			#titleBar {
+				display: none !important; /* Nukes the element entirely */
+			}
+			body, html {
+				padding-top: 0 !important; /* Stops the JS from pushing the page down */
+				margin-top: 0 !important;
+				background-color: #0d0d0d !important; /* Ensures any background loading is dark, not white */
 			}
 
-			/* 10. MOBILE TITLE BAR FIX (JS INJECTED) */
-			#titleBar {
-				background: transparent !important;
-				background-color: transparent !important;
-				box-shadow: none !important;
-				border: none !important;
-			}
-			#titleBar .title {
-				display: none !important; /* Hides the injected text */
-			}
 
 		</style>
 	</head>
