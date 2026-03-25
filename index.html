@@ -28,36 +28,32 @@
 			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
 			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
-			/* 3. FLUIDITY & REVEAL ENGINE */
+			/* 3. PURE FADE-IN TRANSITION (No Inversion) */
 			.reveal {
 				opacity: 0;
-				transform: translateY(20px);
-				transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), background-color 1s ease, box-shadow 1s ease !important;
+				transform: translateY(15px);
+				/* Consistent background so there's no color-jumping during fade */
+				background-color: rgba(15, 15, 15, 0.55) !important; 
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+				transition: opacity 1s ease-out, transform 0.8s ease-out !important;
 			}
 			.reveal.active {
 				opacity: 1 !important;
 				transform: translateY(0) !important;
 			}
 			
-			/* ETHEREAL BOX: Only applies to Bio sections, NOT Intro */
-			.box.style2.reveal.active {
-				background-color: rgba(15, 15, 15, 0.55) !important; 
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
-				border: none !important;
-			}
-
 			/* 4. TYPOGRAPHY */
 			body, p, a, li, span { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
 			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
 			
 			#intro h2, #intro p { color: #ffffff !important; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); }
-			.box.style2 h2, .box.style2 p, .box.style2 li, #media h3, #contact h2 {
+			.reveal h2, .reveal p, .reveal li, #media h3, #contact h2 {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
 			/* 5. LAYOUT & PADDING */
-			#intro .content { padding-top: 200px !important; background: transparent !important; box-shadow: none !important; }
+			#intro .content { padding-top: 200px !important; background: transparent !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
 
@@ -69,10 +65,9 @@
 				#media .content, #contact .content { padding: 120px 0 !important; }
 			}
 
-			/* 6. CONTACT FORM: GHOST STYLE */
+			/* 6. CONTACT FORM & PERFECTLY CENTERED BUTTON */
 			#contact .box {
 				background: transparent !important;
-				background-color: transparent !important;
 				box-shadow: none !important;
 				border: none !important;
 				padding: 0 !important;
@@ -83,35 +78,49 @@
 				border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
 				border-radius: 0 !important;
 				color: #ffffff !important;
-				transition: border-color 0.3s ease !important;
 				margin-bottom: 1.5em !important;
 				padding: 10px 5px !important;
 			}
-			#contact form input:focus, #contact form textarea:focus {
-				border-bottom: 1px solid #ffffff !important;
-				outline: none !important;
-			}
 			#contact input[type="submit"] {
+				display: block !important;
+				margin: 0 auto !important;
 				background-color: transparent !important;
 				border: 1px solid #ffffff !important;
 				color: #ffffff !important;
 				border-radius: 40px !important;
-				padding: 0.7em 2.5em !important;
+				height: 3.5em !important;
+				line-height: 3.4em !important; /* Adjusted slightly for visual vertical center */
+				padding: 0 4em !important;
+				text-align: center !important;
 				transition: all 0.3s ease !important;
+				font-size: 0.9em !important;
+				cursor: pointer;
 			}
 			#contact input[type="submit"]:hover {
 				background-color: #ffffff !important;
 				color: #0d0d0d !important;
 			}
 
-			/* 7. MOUSE ICON & GALLERY */
+			/* 7. GALLERY & POPUP CLEANUP (Removes the boxes/text underneath photo) */
+			.poptrox-popup .caption { 
+				display: none !important; 
+				height: 0 !important; 
+				visibility: hidden !important;
+			}
+			.poptrox-popup { 
+				background: rgba(13, 13, 13, 0.9) !important; 
+				box-shadow: none !important;
+				padding-bottom: 0 !important; 
+			}
+			.gallery article .image img { transition: transform 0.6s ease !important; }
+			.gallery article .image:hover img { transform: scale(1.05) !important; }
+			.gallery article .image:before, .gallery article .image:after { display: none !important; }
+
+			/* 8. MOUSE ICON */
 			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; }
 			.mouse { width: 30px; height: 50px; border: 2px solid #fff; border-radius: 15px; position: relative; margin: 0 auto 10px; }
 			.wheel { width: 4px; height: 8px; background: #fff; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 1.5s infinite; }
 			@keyframes scroll { 0% { top: 8px; opacity: 1; } 100% { top: 28px; opacity: 0; } }
-			.gallery article .image img { transition: transform 0.6s ease !important; }
-			.gallery article .image:hover img { transform: scale(1.05) !important; }
-			.gallery article .image:before, .gallery article .image:after { display: none !important; }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -141,9 +150,8 @@
 		<section id="highlights" class="main style2 left dark fullscreen">
 			<div class="content box style2 reveal">
 				<header><h2>2024/2025 Season Highlights</h2></header>
-				<p>Perišić’s recent seasons have been defined by major principal roles and critical success. In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo, praising his "careful phrasing" and "homogeneous voice."</p>
+				<p>Perišić’s recent seasons have been defined by major principal roles and critical success. In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo, praising his "careful phrasing" and "homogeneous voice".</p>
 				<p>His interpretations of Puccini roles have garnered equal praise; performing Lescaut in <em>Manon Lescaut</em>, he was cited as the "best of the night" (Recomana), while his Marcello in <em>La bohème</em> confirmed his "resonant and brilliant" vocal quality (Olyrix).</p>
-				<p>His performance as Dottore Malatesta in <em>Don Pasquale</em> at the Teatre Principal de Palma was also singled out by critics, who noted his "very cared-for and expressive interpretation" (Ópera Actual).</p>
 			</div>
 			<a href="#past" class="button style2 down anchored scrolly">Next</a>
 		</section>
@@ -160,7 +168,6 @@
 		<section id="acknowledgements" class="main style2 left dark fullscreen">
 			<div class="content box style2 reveal">
 				<header><h2>Acknowledgements</h2></header>
-				<p>Milan Perišić is a distinguished prize-winner in numerous international competitions. Recent accolades include:</p>
 				<ul>
 					<li>Finalist at the Tenor Viñas Competition (2026).</li>
 					<li>"Filipe de Sousa" Special Prize at the 2nd Cascais Opera Competition (2025).</li>
@@ -175,14 +182,14 @@
 
 		<section id="media" class="main style3 primary">
 			<div class="content">
-				<header class="reveal"><h2>Media</h2><p>Recent performances and stage highlights.</p></header>
-				<h3 style="text-align:center; margin-bottom:1.5em;">Performances</h3>
+				<header class="reveal"><h2>Media</h2></header>
+				<h3 style="text-align:center; margin-bottom:1.5em;" class="reveal">Performances</h3>
 				<div class="gallery">
 					<article class="from-left reveal"><a href="https://www.youtube.com/embed/JFgt5JELvT8" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/JFgt5JELvT8/hqdefault.jpg" alt="Video" /></a></article>
 					<article class="from-right reveal"><a href="https://www.youtube.com/embed/wHmu0FwvemM" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/wHmu0FwvemM/hqdefault.jpg" alt="Video" /></a></article>
 					<article class="from-left reveal"><a href="https://www.youtube.com/embed/ukMca3dNFeg" data-poptrox="iframe,800x400" class="image fit"><img src="https://img.youtube.com/vi/ukMca3dNFeg/hqdefault.jpg" alt="Video" /></a></article>
 				</div>
-				<h3 style="text-align:center; margin-top:2em; margin-bottom:1.5em;">Photography</h3>
+				<h3 style="text-align:center; margin-top:2em; margin-bottom:1.5em;" class="reveal">Photography</h3>
 				<div class="gallery">
 					<article class="from-right reveal"><a href="images/fulls/241016-050©A Bofill.jpg" class="image fit"><img src="images/thumbs/241016-050©A Bofill.jpg" alt="Milan" /></a></article>
 					<article class="from-left reveal"><a href="images/fulls/260113-173©ABofill.jpg" class="image fit"><img src="images/thumbs/260113-173©ABofill.jpg" alt="Milan" /></a></article>
