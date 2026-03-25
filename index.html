@@ -13,27 +13,34 @@
 
 		<style>
 			/* ============================================================
-			   1. THE "NO-HEADER" PROTOCOL (Kills all bars/rectangles)
+			   1. THE "NO-HEADER" PROTOCOL (Clean Slate)
 			   ============================================================ */
 			#header, #header:before, #header:after, #titleBar {
 				display: none !important;
-				background: transparent !important;
-				background-color: transparent !important;
-				box-shadow: none !important;
-				border: none !important;
+				opacity: 0 !important;
+				visibility: hidden !important;
+				height: 0 !important;
 			}
+			
 			body {
 				padding-top: 0 !important;
 				margin-top: 0 !important;
+				overflow-x: hidden; /* Stops horizontal "popping" */
+				background-color: #0d0d0d !important;
 			}
+
 			html {
 				scroll-behavior: smooth;
 				background-color: #0d0d0d !important;
 			}
 
 			/* ============================================================
-			   2. BACKGROUNDS
+			   2. BACKGROUNDS & SECTION TRANSITIONS
 			   ============================================================ */
+			section {
+				transition: opacity 0.8s ease-in-out;
+			}
+
 			#intro { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/intro-bg.jpg') !important; background-position: center; background-size: cover; }
 			#current { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important; background-position: center; background-size: cover; }
 			#highlights { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important; background-position: center; background-size: cover; }
@@ -41,29 +48,32 @@
 			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
 			/* ============================================================
-			   3. REVEAL ANIMATION (FAST & SILKY)
+			   3. THE MOBILE-READY REVEAL ENGINE
 			   ============================================================ */
 			.reveal {
 				opacity: 0;
-				transform: translateY(20px);
+				/* translate3d triggers hardware acceleration on Samsung/Android devices */
+				transform: translate3d(0, 25px, 0); 
 				background-color: rgba(15, 15, 15, 0);
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0);
+				box-shadow: 0 0 40px 20px rgba(15, 15, 15, 0);
+				will-change: transform, opacity;
+				
+				/* Ultra-responsive timing */
 				transition: 
-					opacity 0.7s ease-out, 
-					transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+					opacity 0.6s ease-out, 
+					transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
 					background-color 0.8s ease, 
 					box-shadow 0.8s ease;
 			}
+			
 			.reveal.active {
 				opacity: 1 !important;
-				transform: translateY(0) !important;
-				background-color: rgba(15, 15, 15, 0.55) !important; 
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+				transform: translate3d(0, 0, 0) !important;
+				background-color: rgba(15, 15, 15, 0.6) !important; 
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.6) !important; 
 			}
 
-			/* ============================================================
-			   4. TYPOGRAPHY & COLORS
-			   ============================================================ */
+			/* Typography styling */
 			body, p, a, li, span { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
 			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
 			
@@ -72,6 +82,9 @@
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
+			/* ============================================================
+			   4. LAYOUT & PADDING
+			   ============================================================ */
 			#intro .content { padding-top: 200px !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
@@ -82,30 +95,32 @@
 			@media screen and (min-width: 981px) {
 				#intro { background-position: center 20% !important; }
 				
-				/* Text Boxes sit on left/right sides */
+				/* Text Boxes sit on left/right sides as requested */
 				.content.box.style2 { max-width: 45% !important; }
 				.main.style2.right .content { margin-left: auto !important; margin-right: 0 !important; }
 				.main.style2.left .content { margin-right: auto !important; margin-left: 0 !important; }
 
-				#media .content, #contact .content { padding: 100px 0 !important; }
+				#media .content, #contact .content { padding: 120px 0 !important; }
 			}
 			
 			/* ============================================================
-			   6. MOBILE OPTIMIZATIONS
+			   6. MOBILE OPTIMIZATIONS (Samsung/Chrome specific)
 			   ============================================================ */
 			@media screen and (max-width: 980px) {
 				#intro .content { padding-top: 150px !important; }
+				
 				.reveal {
-					box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0); 
-					transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+					/* Subtle shadow on mobile to prevent GPU lag */
+					box-shadow: 0 0 20px 10px rgba(15, 15, 15, 0); 
+					transition: opacity 0.8s ease-out, transform 0.7s ease-out; 
 				}
 				.reveal.active {
-					box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.55) !important; 
+					box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.6) !important; 
 				}
 			}
 
 			/* ============================================================
-			   7. MOUSE ICON, GALLERY & FORMS
+			   7. MOUSE, GALLERY & FORMS
 			   ============================================================ */
 			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; }
 			.mouse { width: 30px; height: 50px; border: 2px solid #fff; border-radius: 15px; position: relative; margin: 0 auto 10px; }
@@ -238,10 +253,11 @@
 
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {
+				// Observer optimized for Samsung/Chrome mobile scroll behavior
 				const observerOptions = {
 					root: null,
-					rootMargin: '0px 0px -50px 0px',
-					threshold: 0.05
+					rootMargin: '0px 0px -15% 0px', 
+					threshold: 0.01 
 				};
 
 				const observer = new IntersectionObserver((entries) => {
