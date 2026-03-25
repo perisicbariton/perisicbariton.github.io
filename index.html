@@ -116,26 +116,31 @@
 				text-transform: uppercase !important; 
 				letter-spacing: 3px !important; 
 			}
-			#header h1 {
-				letter-spacing: 4px !important; 
-			/* 6. INVISIBLE FLOATING HEADER & NAVIGATION */
+
+			/* 6. COMPLETELY INVISIBLE HEADER */
 			#header {
-				background: transparent !important; /* Kills the white/grey box entirely */
+				background: transparent !important; 
+				background-color: transparent !important;
 				backdrop-filter: none !important;
 				-webkit-backdrop-filter: none !important;
 				border-bottom: none !important;
 				box-shadow: none !important;
 			}
-			
 			/* Hide the small redundant name at the top left */
 			#header h1 {
 				display: none !important; 
 			}
-
-			/* Make sure the desktop menu links are white and readable against the photo */
+			/* Make sure the desktop menu links are white and readable */
 			#header nav ul li a {
 				color: #ffffff !important;
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
+			}
+			/* Kill the mobile header background aggressively */
+			@media screen and (max-width: 980px) {
+				#header {
+					background: transparent !important;
+					border: none !important;
+				}
 			}
 
 			/* 7. GALLERY HOVER ZOOM */
@@ -173,17 +178,17 @@
 			}
 
 			/* 9. LAYOUT & DARK MODE FIXES */
-			/* Push the intro text down ~2 lines */
+			/* Push the intro text down exactly 120px */
 			#intro .content {
-				transform: translateY(120px); 
+				transform: translateY(120px) !important; 
 			}
 			/* Change Gallery and Contact sections from white to dark mode */
 			#media, #contact {
-				background-color: #0d0d0d !important; /* Deep dark grey/black */
+				background-color: #0d0d0d !important; 
 			}
 			#media header h2, #media header p,
 			#contact header h2, #contact header p {
-				color: #ffffff !important; /* Force text to be white against the dark background */
+				color: #ffffff !important; 
 			}
 
 		</style>
@@ -236,7 +241,7 @@
 		<section id="highlights" class="main style2 left dark fullscreen">
 				<div class="content box style2 reveal">
 					<header>
-						<h2>2024/2025 Highlights</h2>
+						<h2>2024/2025 Season Highlights</h2>
 					</header>
 					<p>Perišić’s recent seasons have been defined by major principal roles and critical success. In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo, praising his "careful phrasing" and "homogeneous voice."</p>
 					<p>His interpretations of Puccini roles have garnered equal praise; performing Lescaut in <em>Manon Lescaut</em>, he was cited as the "best of the night" (Recomana), while his Marcello in <em>La bohème</em> confirmed his "resonant and brilliant" vocal quality (Olyrix).</p>
