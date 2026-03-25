@@ -48,12 +48,11 @@
 			.bg3 { background-image: url('images/intro-bg-03.jpg'); animation-delay: 8s; }
 			.bg4 { background-image: url('images/intro-bg-04.jpg'); animation-delay: 12s; }
 
-			/* Logic: Fade in for 1s, Hold for 3s, Fade out AFTER the next one is already in */
 			@keyframes directCrossfade {
 				0% { opacity: 0; }
-				6.25% { opacity: 1; }  /* Faded in by 1s */
-				31.25% { opacity: 1; } /* Hold until 5s (overlaps next image by 1s) */
-				37.5% { opacity: 0; }  /* Faded out by 6s */
+				6.25% { opacity: 1; }  
+				31.25% { opacity: 1; } 
+				37.5% { opacity: 0; }  
 				100% { opacity: 0; }
 			}
 
@@ -87,12 +86,14 @@
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
-			/* 6. LAYOUT & DESKTOP OPTIMIZATIONS */
-			#intro .content { padding-top: 180px; background: transparent !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; }
+			/* 6. LAYOUT & MOBILE/DESKTOP OPTIMIZATIONS */
+			/* Mobile Landing: Name and Mouse sitting quite lower */
+			#intro .content { padding-top: 350px !important; background: transparent !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
 
 			@media screen and (min-width: 981px) {
+				/* Desktop Landing: Name sits even lower */
 				#intro .content { padding-top: 550px !important; }
 				#intro { background-position: center 20% !important; }
 				#past { background-position: center 15% !important; }
