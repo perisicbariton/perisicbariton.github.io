@@ -35,11 +35,17 @@
 				background-size: cover;
 			}
 
-			/* 2. TEXT BLOCK BACKGROUND TRANSPARENCY */
-			/* The 0.7 below controls the opacity. Lower it to 0.6 for more transparency, or raise to 0.8 for less. */
+						/* 2. TEXT BLOCK BACKGROUND TRANSPARENCY & TEXT READABILITY */
 			.box.style2 {
-				background-color: rgba(20, 20, 20, 0.7) !important; 
+				background-color: rgba(20, 20, 20, 0.6) !important; /* Slightly more transparent box */
 			}
+			
+			/* Force all text inside the box to be white with a subtle shadow for readability */
+			.box.style2, .box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
+				color: #ffffff !important; 
+				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+			}
+
 		</style>
 	</head>
 	<body class="is-preload">
