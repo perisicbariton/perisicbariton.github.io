@@ -52,13 +52,15 @@
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
-			/* 5. LAYOUT & PADDING */
+			/* 5. LAYOUT & PADDING (DESKTOP TWEAKS) */
 			#intro .content { padding-top: 200px !important; background: transparent !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
 
 			@media screen and (min-width: 981px) {
 				#intro { background-position: center 20% !important; }
+				#past { background-position: center 15% !important; } /* CENTERING TRICK FOR YOUR HEAD */
+				
 				.content.box.style2 { max-width: 45% !important; }
 				.main.style2.right .content { margin-left: auto !important; margin-right: 0 !important; }
 				.main.style2.left .content { margin-right: auto !important; margin-left: 0 !important; }
@@ -101,7 +103,7 @@
 				color: #0d0d0d !important;
 			}
 
-			/* 7. GALLERY & POPUP CLEANUP */
+			/* 7. GALLERY & POPUP CLEANUP (REMOVES BOXES UNDER PHOTOS) */
 			.poptrox-popup .caption { display: none !important; height: 0 !important; visibility: hidden !important; }
 			.poptrox-popup { background: rgba(13, 13, 13, 0.9) !important; box-shadow: none !important; padding-bottom: 0 !important; }
 			.gallery article .image img { transition: transform 0.6s ease !important; }
