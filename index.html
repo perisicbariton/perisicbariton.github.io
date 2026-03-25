@@ -175,7 +175,7 @@
 			#intro .content {
 				transform: translateY(120px) !important; 
 			}
-			/* Change the very base of the webpage to black so no white gaps can exist */
+			/* Change the very base of the webpage to black */
 			body, html {
 				background-color: #0d0d0d !important; 
 			}
@@ -188,14 +188,25 @@
 				color: #ffffff !important; 
 			}
 
-			/* 10. MOBILE FIX: NUKE THE HEADER AND THE GAP */
+			/* 10. THE ULTIMATE MOBILE GAP FIX */
+			#titleBar {
+				display: none !important; 
+			}
+			/* Force the body to ignore JS padding */
+			body {
+				padding-top: 0 !important;
+			}
 			@media screen and (max-width: 980px) {
 				#header {
-					display: none !important; /* Completely deletes the top bar on mobile */
+					display: none !important; 
+				}
+				body {
+					padding-top: 0 !important; /* Explicitly targets mobile state */
 				}
 				#intro {
-					padding-top: 0 !important; /* Stops the template from pushing the photo down */
+					padding-top: 0 !important; 
 					margin-top: 0 !important;
+					min-height: 100vh !important; /* Forces background to top of screen */
 				}
 			}
 
