@@ -118,14 +118,24 @@
 			}
 			#header h1 {
 				letter-spacing: 4px !important; 
+			/* 6. INVISIBLE FLOATING HEADER & NAVIGATION */
+			#header {
+				background: transparent !important; /* Kills the white/grey box entirely */
+				backdrop-filter: none !important;
+				-webkit-backdrop-filter: none !important;
+				border-bottom: none !important;
+				box-shadow: none !important;
+			}
+			
+			/* Hide the small redundant name at the top left */
+			#header h1 {
+				display: none !important; 
 			}
 
-			/* 6. FROSTED GLASS HEADER */
-			#header {
-				background: rgba(10, 10, 10, 0.4) !important; 
-				backdrop-filter: blur(12px) !important;
-				-webkit-backdrop-filter: blur(12px) !important;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+			/* Make sure the desktop menu links are white and readable against the photo */
+			#header nav ul li a {
+				color: #ffffff !important;
+				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
 			/* 7. GALLERY HOVER ZOOM */
