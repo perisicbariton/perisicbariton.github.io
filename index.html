@@ -19,7 +19,7 @@
 				background-size: cover;
 			}
 			
-			/* DESKTOP TWEAK: Prevents your face from being cut off on wide screens */
+			/* DESKTOP TWEAK: Prevents your head from being cut off on wide screens */
 			@media screen and (min-width: 981px) {
 				#intro {
 					background-position: center 20% !important; 
@@ -48,24 +48,27 @@
 			}
 
 			/* 2. TEXT BLOCK "ETHEREAL" FADE & TAPERED EDGES */
-			.box.style2 {
+			.box.style2, #media header, #contact header, #media h3 {
 				background-color: rgba(15, 15, 15, 0) !important; 
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important; 
 				border: none !important;
-				transition: all 1.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
+				transition: background-color 1.8s ease, box-shadow 1.8s ease !important;
+				display: inline-block; /* Ensures the glow wraps the text properly */
 			}
 			
-			.reveal.active.box.style2 {
+			/* Reveal bloom animation for ALL text sections */
+			.reveal.active.box.style2, 
+			.reveal.active#media header, 
+			.reveal.active#contact header,
+			.reveal.active#media h3 {
 				background-color: rgba(15, 15, 15, 0.55) !important; 
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
 			}
 			
-			.box.style2 h2, 
-			.box.style2 p, 
-			.box.style2 em, 
-			.box.style2 li {
+			.box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li,
+			#media header h2, #media header p, #contact header h2, #contact header p, #media h3 {
 				color: #ffffff !important; 
-				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
 			/* 3. SCROLL ANIMATION (MOUSE ICON) */
@@ -209,24 +212,18 @@
 			#intro .content {
 				padding-top: 200px !important; 
 			}
+			/* Overwriting green footer and other backgrounds */
 			body, html, #media, #contact, #footer {
-    background-color: #0d0d0d !important; 
-}
-/* This removes any weird green shadow/border the template might have left */
-#footer {
-    box-shadow: none !important;
-    border-top: none !important;
-}
-
+				background-color: #0d0d0d !important; 
 			}
-			#media header h2, #media header p,
-			#contact header h2, #contact header p, #media h3 {
-				color: #ffffff !important; 
+			#footer {
+				box-shadow: none !important;
+				border-top: none !important;
 			}
 			#media h3 {
 				margin-top: 2em;
 				margin-bottom: 1em;
-				letter-spacing: 2px !important;
+				letter-spacing: 3px !important; /* Unified with other headers */
 			}
 
 			/* 10. THE ULTIMATE MOBILE GAP FIX */
@@ -351,6 +348,8 @@
 						<li>First Prize at the VII Concurso Internacional de Canto "Compostela Lírica" (2024).</li>
 						<li>First Prize and special prizes at the "Les Corts" International Music Competition, "BA Lirica" International Voice Competition, and "Josep Palet" Singing Contest (all in 2023).</li>
 					</ul>
+					<p>He was also a finalist at the Sumi Jo International Singing Competition (2024) and the Paris Opera Competition (2023).</p>
+					
 					<header>
 						<br>
 						<h2>Education</h2>
@@ -362,7 +361,7 @@
 
 		<section id="media" class="main style3 primary">
 				<div class="content">
-					<header>
+					<header class="reveal">
 						<h2>Media</h2>
 						<p>Recent performances and stage highlights.</p>
 					</header>
@@ -390,60 +389,63 @@
 
 					<h3 class="reveal" style="margin-top: 3em;">Photography</h3>
 					<div class="gallery reveal">
+							
 							<article class="from-right">
 								<a href="images/fulls/241016-050©A Bofill.jpg" class="image fit">
-									<img src="images/thumbs/241016-050©A Bofill.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/241016-050©A Bofill.jpg" alt="Milan" />
 								</a>
 							</article>
 
 							<article class="from-left">
 								<a href="images/fulls/260113-173©ABofill.jpg" class="image fit">
-									<img src="images/thumbs/260113-173©ABofill.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/260113-173©ABofill.jpg" alt="Milan" />
 								</a>
 							</article>
 
 							<article class="from-right">
 								<a href="images/fulls/260116-206©ABofill.jpg" class="image fit">
-									<img src="images/thumbs/260116-206©ABofill.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/260116-206©ABofill.jpg" alt="Milan" />
 								</a>
 							</article>
 
 							<article class="from-left">
 								<a href="images/fulls/T25 La Guineueta 139.jpg" class="image fit">
-									<img src="images/thumbs/T25 La Guineueta 139.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/T25 La Guineueta 139.jpg" alt="Milan" />
 								</a>
 							</article>
 
 							<article class="from-right">
 								<a href="images/fulls/T25 La Guineueta 143.jpg" class="image fit">
-									<img src="images/thumbs/T25 La Guineueta 143.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/T25 La Guineueta 143.jpg" alt="Milan" />
 								</a>
 							</article>
 
 							<article class="from-left">
 								<a href="images/fulls/T25 La Guineueta 153.jpg" class="image fit">
-									<img src="images/thumbs/T25 La Guineueta 153.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/T25 La Guineueta 153.jpg" alt="Milan" />
 								</a>
 							</article>
 
 							<article class="from-right">
 								<a href="images/fulls/LCH1344.jpg" class="image fit">
-									<img src="images/thumbs/LCH1344.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/LCH1344.jpg" alt="Milan" />
 								</a>
 							</article>
 
 							<article class="from-left">
 								<a href="images/fulls/LOR0892.jpg" class="image fit">
-									<img src="images/thumbs/LOR0892.jpg" alt="Milan Perišić" />
+									<img src="images/thumbs/LOR0892.jpg" alt="Milan" />
 								</a>
 							</article>
+
 					</div>
+
 				</div>
 			</section>
 
 		<section id="contact" class="main style4 secondary">
 				<div class="content">
-					<header>
+					<header class="reveal">
 						<h2>Get in touch</h2>
 					</header>
 					<div class="box reveal">
@@ -467,6 +469,7 @@
 						<li><a href="https://www.instagram.com/milanperisic_baritone" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
 						<li><a href="https://www.youtube.com/@MilanPerisicbaritone" class="icon brands fa-youtube" target="_blank"><span class="label">YouTube</span></a></li>
 					</ul>
+
 				<ul class="copyright">
 						<li>&copy; Milan Perišić. All rights reserved.</li>
 					</ul>
@@ -503,5 +506,6 @@
 					});
 				});
 			</script>
+
 	</body>
 </html>
