@@ -39,15 +39,24 @@
 				background-size: cover;
 			}
 
-			/* 2. TEXT BLOCK "ETHEREAL" FADE & TAPERED EDGES (NO BLUR) */
+			/* 2. TEXT BLOCK "ETHEREAL" FADE & TAPERED EDGES */
 			.box.style2 {
-				background-color: rgba(15, 15, 15, 0.55) !important; 
-				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+				background-color: rgba(15, 15, 15, 0) !important; 
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0) !important; 
 				border: none !important;
-				transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+				transition: all 1.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
 			}
 			
-			.box.style2 h2, .box.style2 p, .box.style2 em, .box.style2 li {
+			/* When the reveal becomes active, the background blooms */
+			.reveal.active.box.style2 {
+				background-color: rgba(15, 15, 15, 0.55) !important; 
+				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
+			}
+			
+			.box.style2 h2, 
+			.box.style2 p, 
+			.box.style2 em, 
+			.box.style2 li {
 				color: #ffffff !important; 
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 			}
@@ -331,8 +340,6 @@
 						<li>First Prize at the VII Concurso Internacional de Canto "Compostela Lírica" (2024).</li>
 						<li>First Prize and special prizes at the "Les Corts" International Music Competition, "BA Lirica" International Voice Competition, and "Josep Palet" Singing Contest (all in 2023).</li>
 					</ul>
-					<p>He was also a finalist at the Sumi Jo International Singing Competition (2024) and the Paris Opera Competition (2023).</p>
-					
 					<header>
 						<br>
 						<h2>Education</h2>
@@ -409,21 +416,19 @@
 							</article>
 
 							<article class="from-right">
-								<a href="images/fulls/_LCH1344.jpg" class="image fit">
-									<img src="images/thumbs/_LCH1344.jpg" alt="Milan Perišić" />
+								<a href="images/fulls/LCH1344.jpg" class="image fit">
+									<img src="images/thumbs/LCH1344.jpg" alt="Milan Perišić" />
 								</a>
 							</article>
 
 							<article class="from-left">
-								<a href="images/fulls/_LOR0892.jpg" class="image fit">
-									<img src="images/thumbs/_LOR0892.jpg" alt="Milan Perišić" />
+								<a href="images/fulls/LOR0892.jpg" class="image fit">
+									<img src="images/thumbs/LOR0892.jpg" alt="Milan Perišić" />
 								</a>
 							</article>
 					</div>
-
 				</div>
 			</section>
-
 
 		<section id="contact" class="main style4 secondary">
 				<div class="content">
