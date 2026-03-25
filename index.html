@@ -21,14 +21,48 @@
 			body { padding-top: 0 !important; margin-top: 0 !important; overflow-x: hidden !important; background-color: #0d0d0d !important; }
 			html { scroll-behavior: smooth; background-color: #0d0d0d !important; }
 
-			/* 2. BACKGROUNDS */
-			#intro { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0.85) 100%), url('images/intro-bg.jpg') !important; background-position: center; background-size: cover; }
+			/* 2. THE SNAPPY CROSSFADE ENGINE (16s Total Cycle) */
+			#intro { position: relative; overflow: hidden; background: #000 !important; }
+			
+			.intro-bg-layer {
+				position: absolute;
+				top: 0; left: 0; width: 100%; height: 100%;
+				background-size: cover;
+				background-position: center;
+				opacity: 0;
+				z-index: 0;
+				animation: crossfade 16s infinite; /* Accelerated from 24s to 16s */
+			}
+			
+			.intro-overlay {
+				position: absolute;
+				top: 0; left: 0; width: 100%; height: 100%;
+				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 15%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0.85) 100%);
+				z-index: 1;
+			}
+
+			#intro .content { position: relative; z-index: 2; }
+
+			.bg1 { background-image: url('images/intro-bg-01.jpg'); animation-delay: 0s; }
+			.bg2 { background-image: url('images/intro-bg-02.jpg'); animation-delay: 4s; }
+			.bg3 { background-image: url('images/intro-bg-03.jpg'); animation-delay: 8s; }
+			.bg4 { background-image: url('images/intro-bg-04.jpg'); animation-delay: 12s; }
+
+			@keyframes crossfade {
+				0% { opacity: 0; }
+				6.25% { opacity: 1; }  /* Fade in 1s */
+				18.75% { opacity: 1; } /* Hold 2s */
+				25% { opacity: 0; }    /* Fade out 1s */
+				100% { opacity: 0; }
+			}
+
+			/* 3. SECTION BACKGROUNDS */
 			#current { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important; background-position: center; background-size: cover; }
 			#highlights { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important; background-position: center; background-size: cover; }
 			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
 			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
-			/* 3. PURE FADE-IN TRANSITION */
+			/* 4. REVEAL TRANSITIONS */
 			.reveal {
 				opacity: 0;
 				transform: translateY(15px);
@@ -42,7 +76,7 @@
 				transform: translateY(0) !important;
 			}
 			
-			/* 4. TYPOGRAPHY */
+			/* 5. TYPOGRAPHY & COLORS */
 			body, p, a, li, span { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
 			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
 			
@@ -52,70 +86,50 @@
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
-			/* 5. LAYOUT & DESKTOP OPTIMIZATIONS */
+			/* 6. LAYOUT & DESKTOP OPTIMIZATIONS */
 			#intro .content { padding-top: 180px; background: transparent !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
 
 			@media screen and (min-width: 981px) {
-				/* Name Placement lowered for maximum cinematic effect on Desktop */
 				#intro .content { padding-top: 550px !important; }
-				
 				#intro { background-position: center 20% !important; }
 				#past { background-position: center 15% !important; }
 				#acknowledgements { background-position: center 35% !important; } 
 				
-				/* Alternating Boxes */
 				.content.box.style2 { max-width: 45% !important; }
 				.main.style2.right .content { margin-left: auto !important; margin-right: 0 !important; }
 				.main.style2.left .content { margin-right: auto !important; margin-left: 0 !important; }
 				#media .content, #contact .content { padding: 120px 0 !important; }
 			}
 
-			/* 6. CONTACT FORM & PERFECTLY CENTERED BUTTON */
-			#contact .box {
-				background: transparent !important;
-				box-shadow: none !important;
-				border: none !important;
-				padding: 0 !important;
-			}
+			/* 7. CONTACT FORM & PERFECTLY CENTERED BUTTON */
+			#contact .box { background: transparent !important; box-shadow: none !important; border: none !important; padding: 0 !important; }
 			#contact form input, #contact form textarea {
-				background: transparent !important;
-				border: none !important;
+				background: transparent !important; border: none !important;
 				border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-				border-radius: 0 !important;
-				color: #ffffff !important;
-				margin-bottom: 1.5em !important;
-				padding: 10px 5px !important;
+				border-radius: 0 !important; color: #ffffff !important;
+				margin-bottom: 1.5em !important; padding: 10px 5px !important;
 			}
 			#contact input[type="submit"] {
-				display: block !important;
-				margin: 0 auto !important;
-				background-color: transparent !important;
-				border: 1px solid #ffffff !important;
-				color: #ffffff !important;
-				border-radius: 40px !important;
-				height: 3.5em !important;
-				line-height: 3.4em !important; 
-				padding: 0 4em !important;
-				text-align: center !important;
-				transition: all 0.3s ease !important;
-				font-size: 0.9em !important;
+				display: block !important; margin: 0 auto !important;
+				background-color: transparent !important; border: 1px solid #ffffff !important;
+				color: #ffffff !important; border-radius: 40px !important;
+				height: 3.5em !important; line-height: 3.4em !important; 
+				padding: 0 4em !important; text-align: center !important;
+				transition: all 0.3s ease !important; font-size: 0.9em !important;
 				cursor: pointer;
 			}
-			#contact input[type="submit"]:hover {
-				background-color: #ffffff !important;
-				color: #0d0d0d !important;
-			}
+			#contact input[type="submit"]:hover { background-color: #ffffff !important; color: #0d0d0d !important; }
 
-			/* 7. GALLERY & POPUP CLEANUP */
+			/* 8. GALLERY & POPUP CLEANUP */
 			.poptrox-popup .caption { display: none !important; height: 0 !important; visibility: hidden !important; }
 			.poptrox-popup { background: rgba(13, 13, 13, 0.9) !important; box-shadow: none !important; padding-bottom: 0 !important; }
 			.gallery article .image img { transition: transform 0.6s ease !important; }
 			.gallery article .image:hover img { transform: scale(1.05) !important; }
 			.gallery article .image:before, .gallery article .image:after { display: none !important; }
 
-			/* 8. MOUSE ICON */
+			/* 9. MOUSE ICON */
 			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; }
 			.mouse { width: 30px; height: 50px; border: 2px solid #fff; border-radius: 15px; position: relative; margin: 0 auto 10px; }
 			.wheel { width: 4px; height: 8px; background: #fff; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 1.5s infinite; }
@@ -125,6 +139,11 @@
 	<body class="is-preload">
 
 		<section id="intro" class="main style1 dark fullscreen">
+			<div class="intro-bg-layer bg1"></div>
+			<div class="intro-bg-layer bg2"></div>
+			<div class="intro-bg-layer bg3"></div>
+			<div class="intro-bg-layer bg4"></div>
+			<div class="intro-overlay"></div>
 			<div class="content">
 				<header><h2>Milan Perišić</h2></header>
 				<p>Baritone</p>
