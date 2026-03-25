@@ -12,36 +12,48 @@
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
 		<style>
-			/* 0. SMOOTH SECTION TRANSITIONS */
+			/* ============================================================
+			   1. THE "NO-HEADER" PROTOCOL (Kills all bars/rectangles)
+			   ============================================================ */
+			#header, #header:before, #header:after, #titleBar {
+				display: none !important;
+				background: transparent !important;
+				background-color: transparent !important;
+				box-shadow: none !important;
+				border: none !important;
+			}
+			body {
+				padding-top: 0 !important;
+				margin-top: 0 !important;
+			}
 			html {
 				scroll-behavior: smooth;
-			}
-			section {
-				transition: opacity 0.8s ease;
-				overflow: hidden; 
+				background-color: #0d0d0d !important;
 			}
 
-			/* 1. BACKGROUNDS */
+			/* ============================================================
+			   2. BACKGROUNDS
+			   ============================================================ */
 			#intro { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/intro-bg.jpg') !important; background-position: center; background-size: cover; }
 			#current { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important; background-position: center; background-size: cover; }
 			#highlights { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important; background-position: center; background-size: cover; }
 			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
 			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
 
-			/* 2. ACCELERATED REVEAL ANIMATION */
+			/* ============================================================
+			   3. REVEAL ANIMATION (FAST & SILKY)
+			   ============================================================ */
 			.reveal {
 				opacity: 0;
 				transform: translateY(20px);
 				background-color: rgba(15, 15, 15, 0);
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0);
-				/* Speed increased: from 1.2s/1s down to 0.7s/0.6s */
 				transition: 
 					opacity 0.7s ease-out, 
 					transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
 					background-color 0.8s ease, 
 					box-shadow 0.8s ease;
 			}
-			
 			.reveal.active {
 				opacity: 1 !important;
 				transform: translateY(0) !important;
@@ -49,7 +61,9 @@
 				box-shadow: 0 0 60px 40px rgba(15, 15, 15, 0.55) !important; 
 			}
 
-			/* 3. CORE TYPOGRAPHY */
+			/* ============================================================
+			   4. TYPOGRAPHY & COLORS
+			   ============================================================ */
 			body, p, a, li, span { font-family: 'Jost', sans-serif !important; font-weight: 300 !important; line-height: 1.8; }
 			h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif !important; font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 3px !important; }
 			
@@ -58,68 +72,57 @@
 				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important;
 			}
 
-			/* 4. LAYOUT TWEAKS */
 			#intro .content { padding-top: 200px !important; }
 			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
-			#footer { box-shadow: none !important; border-top: none !important; padding: 4em 0; }
-			
-			/* 5. HEADER & NAV */
-			#header { background: transparent !important; border: none !important; box-shadow: none !important; }
-			#header h1 { display: none !important; }
-			#header nav ul li a { color: #ffffff !important; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9) !important; }
-			#titleBar { display: none !important; }
+			#footer { border-top: none !important; padding: 4em 0; }
 
-			/* 6. MOUSE ICON */
-			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; }
-			.mouse { width: 30px; height: 50px; border: 2px solid #fff; border-radius: 15px; position: relative; margin: 0 auto 10px; }
-			.wheel { width: 4px; height: 8px; background: #fff; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 1.5s infinite; }
-			@keyframes scroll { 0% { top: 8px; opacity: 1; } 100% { top: 28px; opacity: 0; } }
-
-			/* 7. MEDIA QUERIES (DESKTOP) */
+			/* ============================================================
+			   5. DESKTOP OPTIMIZATIONS (Alternating Sides)
+			   ============================================================ */
 			@media screen and (min-width: 981px) {
 				#intro { background-position: center 20% !important; }
-				/* Alternating sides preserved */
-				.content.box.style2 { max-width: 45%; } 
+				
+				/* Text Boxes sit on left/right sides */
+				.content.box.style2 { max-width: 45% !important; }
+				.main.style2.right .content { margin-left: auto !important; margin-right: 0 !important; }
+				.main.style2.left .content { margin-right: auto !important; margin-left: 0 !important; }
+
 				#media .content, #contact .content { padding: 100px 0 !important; }
 			}
 			
-			/* 8. MEDIA QUERIES (MOBILE) */
+			/* ============================================================
+			   6. MOBILE OPTIMIZATIONS
+			   ============================================================ */
 			@media screen and (max-width: 980px) {
-				#header { display: none !important; }
-				#intro .content { padding-top: 100px !important; }
+				#intro .content { padding-top: 150px !important; }
 				.reveal {
 					box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0); 
-					transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Reliable mobile timing */
+					transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
 				}
 				.reveal.active {
 					box-shadow: 0 0 30px 20px rgba(15, 15, 15, 0.55) !important; 
 				}
 			}
 
-			/* 9. GALLERY & FORMS */
+			/* ============================================================
+			   7. MOUSE ICON, GALLERY & FORMS
+			   ============================================================ */
+			.scroll-wrapper { display: inline-block; margin-top: 30px; text-decoration: none; border: none !important; opacity: 0.8; }
+			.mouse { width: 30px; height: 50px; border: 2px solid #fff; border-radius: 15px; position: relative; margin: 0 auto 10px; }
+			.wheel { width: 4px; height: 8px; background: #fff; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 1.5s infinite; }
+			@keyframes scroll { 0% { top: 8px; opacity: 1; } 100% { top: 28px; opacity: 0; } }
+
 			.gallery article .image img { transition: transform 0.6s ease, filter 0.6s ease !important; }
 			.gallery article .image:hover img { transform: scale(1.05) !important; filter: brightness(0.7) !important; }
+			.gallery article .image { background-color: #000 !important; }
+			.gallery article .image:before, .gallery article .image:after { display: none !important; }
+			
 			#contact form input, #contact form textarea { background: transparent !important; border: none !important; border-bottom: 1px solid rgba(255,255,255,0.3) !important; color: #fff !important; }
 			#contact input[type="submit"] { background: transparent !important; border: 1px solid #fff !important; color: #fff !important; }
 			#contact input[type="submit"]:hover { background: #fff !important; color: #000 !important; }
-
 		</style>
 	</head>
 	<body class="is-preload">
-
-		<header id="header">
-			<nav>
-				<ul>
-					<li><a href="#intro">Home</a></li>
-					<li><a href="#current">2026 Season</a></li>
-					<li><a href="#highlights">24/25 Highlights</a></li>
-					<li><a href="#past">Past Seasons</a></li>
-					<li><a href="#acknowledgements">Acknowledgements</a></li>
-					<li><a href="#media">Media</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
-		</header>
 
 		<section id="intro" class="main style1 dark fullscreen">
 			<div class="content">
@@ -137,7 +140,7 @@
 		<section id="current" class="main style2 right dark fullscreen">
 			<div class="content box style2 reveal">
 				<header><h2>Current & Recent Engagements (2026)</h2></header>
-				<p>Milan Perišić has started the 2026 season with high-level international visibility. In January, he returned to the Gran Teatre del Liceu as the Steuermann in a new production of <em>Tristan und Isolde</em> featuring Lise Davidsen. That same month, he was a Finalist at the prestigious 63rd Tenor Viñas Competition in Barcelona.</p>
+				<p>Milan Perišić has started the 2026 season with high-level international visibility. In January, he returned to the Gran Teatre del Liceu as the Steuermann in a new production of <em>Tristan und Isolde</em>. That same month, he was a Finalist at the 63rd Tenor Viñas Competition in Barcelona.</p>
 				<p>In February, Perišić made his house debut at ABAO Bilbao Opera as Cecil in Donizetti's <em>Maria Stuarda</em>. Later in the year, he returns to the Liceu to sing Schaunard in <em>La bohème</em> and will appear as the Heerrufer in Wagner's <em>Lohengrin</em> at Opera Tenerife in November.</p>
 			</div>
 			<a href="#highlights" class="button style2 down anchored scrolly">Next</a>
@@ -148,7 +151,6 @@
 				<header><h2>2024/2025 Season Highlights</h2></header>
 				<p>Perišić’s recent seasons have been defined by major principal roles and critical success. In 2025, his portrayal of Conte d'Almaviva in <em>Le nozze di Figaro</em> with Òpera Catalunya was hailed as "splendid" and "impeccable" by Scherzo, praising his "careful phrasing" and "homogeneous voice."</p>
 				<p>His interpretations of Puccini roles have garnered equal praise; performing Lescaut in <em>Manon Lescaut</em>, he was cited as the "best of the night" (Recomana), while his Marcello in <em>La bohème</em> confirmed his "resonant and brilliant" vocal quality (Olyrix).</p>
-				<p>His performance as Dottore Malatesta in <em>Don Pasquale</em> at the Teatre Principal de Palma was also singled out by critics, who noted his "very cared-for and expressive interpretation" (Ópera Actual). At the Gran Teatre del Liceu, his role as Harašta in <em>The Cunning Little Vixen</em> was praised as a standout performance in the cast (EnPlatea / Llegir.cat).</p>
 			</div>
 			<a href="#past" class="button style2 down anchored scrolly">Next</a>
 		</section>
@@ -156,7 +158,7 @@
 		<section id="past" class="main style2 right dark fullscreen">
 			<div class="content box style2 reveal">
 				<header><h2>Past Seasons & Early Highlights</h2></header>
-				<p>Perišić’s earlier international career is marked by prestigious debuts. In 2023, he performed multiple roles in Shostakovich's <em>The Nose</em> at Teatro Real in Madrid and appeared as Scarus in the European premiere of John Adams' <em>Antony & Cleopatra</em> at the Gran Teatre del Liceu.</p>
+				<p>Perišić’s earlier international career is marked by prestigious debuts. In 2023, he performed multiple roles in Shostakovich's <em>The Nose</em> at Teatro Real and appeared as Scarus in the European premiere of John Adams' <em>Antony & Cleopatra</em> at the Liceu.</p>
 				<p>In 2022, he sang the title role in <em>Don Giovanni</em> in Spoleto and Perugia, and Alonso in the world premiere of J. Carmena's <em>El Orgullo de Quererte</em> at Teatros del Canal.</p>
 			</div>
 			<a href="#acknowledgements" class="button style2 down anchored scrolly">Next</a>
@@ -167,13 +169,12 @@
 				<header><h2>Acknowledgements</h2></header>
 				<ul>
 					<li>Finalist at the Tenor Viñas Competition (2026).</li>
-					<li>"Filipe de Sousa" Special Prize at the 2nd Cascais Opera International Competition (2025).</li>
-					<li>Second Prize at the XX Certamen de Nuevas Voces Ciudad de Sevilla (2024).</li>
-					<li>First Prize at the VII Concurso Internacional de Canto "Compostela Lírica" (2024).</li>
-					<li>First Prize and special prizes at the "Les Corts" International Music Competition, "BA Lirica" International Voice Competition, and "Josep Palet" Singing Contest (all in 2023).</li>
+					<li>"Filipe de Sousa" Special Prize at the 2nd Cascais Opera Competition (2025).</li>
+					<li>First Prize at Compostela Lírica (2024) and Nuevas Voces Ciudad de Sevilla (2024).</li>
+					<li>First Prize at Les Corts, BA Lirica, and Josep Palet (2023).</li>
 				</ul>
 				<header><br><h2>Education</h2></header>
-				<p>Born in Novi Sad, Serbia, Perišić holds a Master's degree in Singing from the Conservatorio di Musica "G. Tartini" in Trieste and a Bachelor's degree in Composition from the Academy of Arts in Novi Sad. He is an alumnus of the Teatro Real’s Crescendo young artist programme (2022) and has held scholarships from the Victoria de los Angeles, Montserrat Caballé, and Melanija Bugarinović Foundations.</p>
+				<p>Born in Novi Sad, Serbia, Perišić holds a Master's degree in Singing from Conservatorio "G. Tartini" and is an alumnus of Teatro Real’s Crescendo programme.</p>
 			</div>
 			<a href="#media" class="button style2 down anchored scrolly">Next</a>
 		</section>
