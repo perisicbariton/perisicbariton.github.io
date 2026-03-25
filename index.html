@@ -8,31 +8,35 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
 		<style>
-			/* The overlay.png adds a subtle darkening effect so white text is readable */
+			/* ADJUSTED TRANSPARENCY:
+			   Previously used 'overlay.png' (pattern). Swapped to linear-gradient with RGBA
+			   Using rgba(0,0,0,0.45) which is 45% opaque / 55% transparent.
+			   This is roughly 15% more transparent than standard heavy overlays used for text readability.
+			*/
 			#intro {
-				background-image: url('assets/css/images/overlay.png'), url('images/intro-bg.jpg') !important;
+				background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/intro-bg.jpg') !important;
 				background-position: center;
-				background-size: auto, cover;
+				background-size: cover;
 			}
 			#current {
-				background-image: url('assets/css/images/overlay.png'), url('images/current-bg.jpg') !important;
+				background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/current-bg.jpg') !important;
 				background-position: center;
-				background-size: auto, cover;
+				background-size: cover;
 			}
 			#highlights {
-				background-image: url('assets/css/images/overlay.png'), url('images/highlights-bg.jpg') !important;
+				background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/highlights-bg.jpg') !important;
 				background-position: center;
-				background-size: auto, cover;
+				background-size: cover;
 			}
 			#past {
-				background-image: url('assets/css/images/overlay.png'), url('images/past-bg.jpg') !important;
+				background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/past-bg.jpg') !important;
 				background-position: center;
-				background-size: auto, cover;
+				background-size: cover;
 			}
 			#credentials {
-				background-image: url('assets/css/images/overlay.png'), url('images/credentials-bg.jpg') !important;
+				background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/credentials-bg.jpg') !important;
 				background-position: center;
-				background-size: auto, cover;
+				background-size: cover;
 			}
 		</style>
 	</head>
