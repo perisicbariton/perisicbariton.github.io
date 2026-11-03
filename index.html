@@ -19,11 +19,11 @@
 				visibility: hidden !important;
 				opacity: 0 !important;
 			}
-			body { padding-top: 0 !important; margin-top: 0 !important; overflow-x: hidden !important; background-color: #0d0d0d !important; }
-			html { scroll-behavior: smooth; background-color: #0d0d0d !important; }
+			body { padding-top: 0 !important; margin-top: 0 !important; overflow-x: hidden !important; background-color: #0d0d0d; }
+			html { scroll-behavior: smooth; background-color: #0d0d0d; }
 
 			/* 2. THE DIRECT CROSSFADE ENGINE (16s Total Cycle) */
-			#intro { position: relative; overflow: hidden; background: #000 !important; }
+			#intro { position: relative; overflow: hidden; background: #000; }
 			
 			.intro-bg-layer {
 				position: absolute;
@@ -64,10 +64,30 @@
 			}
 
 			/* 3. SECTION BACKGROUNDS & HEAD ALIGNMENT */
-			#current { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important; background-position: center; background-size: cover; }
-			#highlights { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important; background-position: center; background-size: cover; }
-			#past { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; background-position: center; background-size: cover; }
-			#acknowledgements { background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; background-position: center; background-size: cover; }
+			#current { 
+				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/current-bg.jpg') !important; 
+				background-position: center !important; 
+				background-size: cover !important; 
+				background-repeat: no-repeat !important;
+			}
+			#highlights { 
+				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/highlights-bg.jpg') !important; 
+				background-position: center !important; 
+				background-size: cover !important; 
+				background-repeat: no-repeat !important;
+			}
+			#past { 
+				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/past-bg.jpg') !important; 
+				background-position: center !important; 
+				background-size: cover !important; 
+				background-repeat: no-repeat !important;
+			}
+			#acknowledgements { 
+				background-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0.85) 100%), url('images/acknowledgements-bg.jpg') !important; 
+				background-position: center !important; 
+				background-size: cover !important; 
+				background-repeat: no-repeat !important;
+			}
 
 			/* 4. REVEAL TRANSITIONS */
 			.reveal {
@@ -94,21 +114,17 @@
 			}
 
 			/* 6. LAYOUT & MOBILE/DESKTOP OPTIMIZATIONS */
-			/* Mobile Landing: Name sits lower (350px) */
 			#intro .content { padding-top: 350px !important; background: transparent !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; }
-			body, html, #media, #contact, #footer { background-color: #0d0d0d !important; }
+			#media, #contact, #footer { background-color: #0d0d0d !important; }
 			#footer { border-top: none !important; padding: 4em 0; }
 
 			@media screen and (min-width: 981px) {
-				/* Desktop Landing: Name sits even lower (550px) */
 				#intro .content { padding-top: 550px !important; }
 				
-				/* Global Desktop Alignments */
 				#intro .intro-bg-layer { background-position: center 20% !important; }
 				#past { background-position: center 15% !important; }
 				#acknowledgements { background-position: center 35% !important; } 
 
-				/* Specific Desktop Alignment fix for Photos 2 and 4 (15% higher) */
 				.bg2 { background-position: center 15% !important; }
 				.bg4 { background-position: center 15% !important; }
 				
